@@ -119,13 +119,11 @@ export function LandingPage() {
     const submit = async (e) => {
         e.preventDefault();
 
-        // 验证表单数据
         if (!formData.name.trim() || !formData.email.trim()) {
             setSubmitMessage('Please fill in all fields');
             return;
         }
 
-        // 验证邮箱格式
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             setSubmitMessage('Please enter a valid email address');
@@ -136,7 +134,6 @@ export function LandingPage() {
         setSubmitMessage('');
 
         try {
-            // 将数据存储到Firebase Firestore
             const docRef = await addDoc(collection(cloudStore, 'subscribers'), {
                 name: formData.name.trim(),
                 email: formData.email.trim(),
@@ -147,10 +144,8 @@ export function LandingPage() {
             console.log('Document written with ID: ', docRef.id);
             setSubmitMessage('Successfully subscribed! Thank you for joining us.');
 
-            // 清空表单
             setFormData({ name: '', email: '' });
 
-            // 3秒后关闭弹窗
             setTimeout(() => {
                 setIsOpen(false);
                 setSubmitMessage('');
@@ -290,7 +285,7 @@ export function LandingPage() {
                     <div className={`${styles.intro5} ${visibleSections.intro5 ? styles.visible : ''}`} style={{ textAlign: "center" }}>
                         <h1>Demo Video</h1>
                         <div>
-                            <iframe width="100%" style={{ aspectRatio: "20/18" }} src="https://www.youtube.com/embed/Ukol4wwkem8" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                            <iframe width="100%" style={{ aspectRatio: "20/18" }} src="https://www.youtube.com/embed/DguRIuX6lvQ" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                         </div>
                     </div>
                 </div>
