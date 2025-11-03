@@ -178,6 +178,11 @@
     opacity: 1;
 }
 
+.featureTitle {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
 .intro2_1 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

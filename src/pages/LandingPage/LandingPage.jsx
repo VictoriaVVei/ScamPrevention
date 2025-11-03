@@ -239,24 +239,24 @@ export function LandingPage() {
                     <h1>Key Features</h1>
                     <div className={styles.intro2_1}>
                         <div>
-                            <img style={{ width: "100px", height: "100px" }} src="/img/CommunityStories.jpg" alt='img' />
-                            <h2>Community Stories</h2>
-                            <p>Learn from real scam incidents shared by people like you.</p>
+                            <svg t="1762205285110" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5269" width="100" height="100"><path d="M384 810.666667h128v-258.474667L341.333333 403.370667l-170.666666 148.821333V810.666667h128v-170.666667h85.333333v170.666667z m512 85.333333H128a42.666667 42.666667 0 0 1-42.666667-42.666667v-320.554666a42.666667 42.666667 0 0 1 14.634667-32.170667L256 364.544V170.666667a42.666667 42.666667 0 0 1 42.666667-42.666667h597.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v682.666666a42.666667 42.666667 0 0 1-42.666667 42.666667z m-213.333333-426.666667v85.333334h85.333333v-85.333334h-85.333333z m0 170.666667v85.333333h85.333333v-85.333333h-85.333333z m0-341.333333v85.333333h85.333333V298.666667h-85.333333z m-170.666667 0v85.333333h85.333333V298.666667h-85.333333z" p-id="5270" fill="#ffffff"></path></svg>
+                            <h2 className={styles.featureTitle}>Community Stories</h2>
+                            <p>Learn from real scam stories.</p>
                         </div>
                         <div>
-                            <img style={{ width: "100px", height: "100px" }} src="/img/ReportAndAwareness.jpeg" alt='img' />
-                            <h2>Report and Awareness</h2>
-                            <p>When you see suspicious behavior, report it to the community — every report helps others stay safe.</p>
+                            <svg t="1762205364402" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6338" width="100" height="100"><path d="M1017.312 985.344a22.784 22.784 0 0 1-32.16 0l-145.312-145.312c12.096-9.28 23.456-19.36 33.984-30.368l143.488 143.488a22.752 22.752 0 0 1 0 32.192z m-345.376-153.184a224.032 224.032 0 1 1-0.064-448.064 224.032 224.032 0 0 1 0.064 448.064z m-0.064-384.32a160.32 160.32 0 1 0 0.032 320.64 160.32 160.32 0 0 0-0.032-320.64zM159.52 767.68v-62.496h225.536c6.688 15.968 20.832 48.096 30.08 62.496H159.52z m0-127.52v-64.512h223.968c-0.608 7.52-1.152 25.056-1.152 32.736s0.576 24.224 1.152 31.744H159.52z m0-351.552h225.568v63.488H159.52V288.608z m225.568 222.976s0 0.032 0 0l-225.568 0.032v-62.496h225.568v62.464z m414.336-224.768v69.568c-14.368-9.248-46.528-17.408-62.496-24.064v-12.736H571.872a91.008 91.008 0 0 1-91.008-91.04V64.512H110.272c-25.12 0-45.504 20.416-45.504 45.536v804.96c0 25.12 20.384 45.504 45.504 45.504h581.184c25.12 0 45.504-20.384 45.504-45.504v-36.512c9.312-3.872 35.36-8.16 44.128-12.928l18.368 18.4v48.992A91.008 91.008 0 0 1 708.448 1024H91.296a91.04 91.04 0 0 1-91.04-91.04V91.04A91.008 91.008 0 0 1 91.296 0H531.904l260.864 270.752c8.224 6.752 6.656 16.064 6.656 16.064z m-255.04-186.496v111.264c0 25.12 20.384 45.504 45.504 45.504h118.752l-164.256-156.768z" fill="#ffffff" p-id="6339"></path></svg>
+                            <h2 className={styles.featureTitle}>Report and Awareness</h2>
+                            <p>Report suspicious activity to protect others.</p>
                         </div>
                         <div>
-                            <img style={{ width: "100px", height: "100px" }} src="/img/Verification.jpg" alt='img' />
-                            <h2>Trust & Profile Verification</h2>
-                            <p>Build safer interactions by identifying trusted members in the community.</p>
+                            <svg t="1762205434999" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7551" width="100" height="100"><path d="M609.376795 658.004305l-0.843204-61.365626 0-70.895677c38.670741-25.780153 74.118068-90.231047 74.118068-90.231047 80.563874-119.233592-6.444782-122.457006-6.444782-122.457006C685.36342 52.963259 504.674151 62.502519 504.664941 62.503543c0 0-161.580049-4.936429-158.066015 250.551406 0 0-87.008656 3.222391-6.444782 122.457006 0 0 35.44835 64.450894 74.118068 90.231047l0 70.895677c0 0-247.733221 93.925183-306.141492 167.57253-66.834174 84.272335 0 138.568962 0 138.568962l410.171824 3.204995 0 0.01842 1.1328-0.00921 1.179872 0.00921 0-0.01842 88.727811-0.721431C609.343025 905.262712 505.151012 798.270932 609.376795 658.004305z" fill="#ffffff" p-id="7552"></path><path d="M767.750825 606.502327c-97.849562 0-177.172165 79.322603-177.172165 177.172165S669.901263 960.846658 767.750825 960.846658s177.172165-79.322603 177.172165-177.172165S865.600387 606.502327 767.750825 606.502327zM746.131435 880.740202l-19.243273-18.828834-0.160659 0.162706-88.944751-87.923492 34.079166-34.280758 72.773444 72.342632 117.889991-125.604696 35.193547 33.137725L746.131435 880.740202z" fill="#ffffff" p-id="7553"></path></svg>
+                            <h2 className={styles.featureTitle} >Trust & Profile Verification</h2>
+                            <p>Spot and connect with trusted community members.</p>
                         </div>
                         <div>
-                            <img style={{ width: "100px", height: "100px" }} src="/img/LearningResources.jpg" alt='img' />
-                            <h2>Learning & Resources</h2>
-                            <p>We make it easy to learn through short guides and interactive examples.</p>
+                            <svg t="1762205466858" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8615" width="100" height="100"><path d="M231.78666667 507.73333333v154.45333334l280.32 146.24 280.53333333-146.24V507.73333333L512.32 653.97333333 231.78666667 507.73333333z m280.53333333-392.64L70.93333333 345.92l441.38666667 230.72 360.96-188.58666667v265.92h80.42666667V345.92L512.32 115.09333333z" p-id="8616" fill="#ffffff"></path></svg>
+                            <h2 className={styles.featureTitle}>Learning & Resources</h2>
+                            <p>Stay safe with quick, interactive learning guides.</p>
                         </div>
                     </div>
                 </div>
