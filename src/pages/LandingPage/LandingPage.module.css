@@ -12,6 +12,8 @@
 }
 
 #landing .welcome_board {
+    display: grid;
+    grid-template-columns: 60% 40%;
     position: relative;
     height: 100vh;
     width: 100vw;
@@ -21,6 +23,63 @@
     overflow: hidden;
     margin-bottom: 100px;
     pointer-events: none;
+}
+
+.videoContainer {
+    grid-column: 2;
+    align-self: center;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+    animation-delay: 0.5s;
+    perspective: 1500px;
+    width: 100%;
+    pointer-events: all;
+}
+
+.demoVideo_title {
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    border-radius: 10px;
+    padding: 10px;
+    transform: translateX(200px);
+    pointer-events: all;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.demoVideo_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(-180deg);
+    backface-visibility: hidden;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 4/3;
+    border: 3px solid white;
+    border-radius: 10px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* .videoContainer:hover .demoVideo_title {
+    transform: translateX(0px) rotateY(180deg);
+}
+
+.videoContainer:hover .demoVideo_container {
+    transform: rotateY(0deg);
+} */
+
+iframe {
+    aspect-ratio: "20/18";
+    border-radius: "30px";
+    border: "1px solid white";
 }
 
 .welcome_board_scrolled {
@@ -40,7 +99,7 @@
 
 #landing .welcome_content {
     position: absolute;
-    left: 150px;
+    left: 120px;
     top: 50%;
     transform: translateY(-50%);
     color: white;

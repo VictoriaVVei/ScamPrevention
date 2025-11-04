@@ -10,15 +10,16 @@ import { collection, addDoc } from 'firebase/firestore';
 export function LandingPage() {
     const [isScrolled, setIsScrolled] = useState(false);
     const input_area_fullScreenRef = useRef(null);
+    const demoVideoTitle_containerRef = useRef(null);
+    const demoVideoTitleRef = useRef(null);
+    const demoVideoContainerRef = useRef(null);
     const [isOpen, setIsOpen] = useState(false);
     const [visibleSections, setVisibleSections] = useState({
         intro2: false,
         intro3: false,
         intro4: false,
-        intro5: false,
         icon2: false,
         icon3: false,
-        icon4: false,
     });
     const [mockImgs, setMockImgs] = useState([
         "/img/Storyboard1.jpg",
@@ -116,6 +117,26 @@ export function LandingPage() {
         }));
     };
 
+    const flipCard_open = throttle(() => {
+        if (demoVideoTitle_containerRef.current && demoVideoContainerRef.current) {
+            demoVideoTitle_containerRef.current.style.transform = "translateX(0px)";
+            demoVideoContainerRef.current.style.transform = "translateX(0px) rotateY(-180deg)";
+            demoVideoTitleRef.current.style.transform = "translateX(200px)"
+            setTimeout(() => {
+                demoVideoTitle_containerRef.current.style.transform = "translateX(0px) rotateY(180deg)";
+                demoVideoContainerRef.current.style.transform = "translateX(0px) rotateY(0deg)";
+            }, 600);
+        }
+    }, 1000);
+
+    const flipCard_close = throttle(() => {
+        if (demoVideoTitle_containerRef.current && demoVideoContainerRef.current) {
+            demoVideoTitle_containerRef.current.style.transform = "translateX(200px) rotateY(0deg)";
+            demoVideoContainerRef.current.style.transform = "translateX(200px) rotateY(-180deg)";
+            demoVideoTitleRef.current.style.transform = "translateX(0px)"
+        }
+    }, 1000);
+
     const submit = async (e) => {
         e.preventDefault();
 
@@ -177,8 +198,12 @@ export function LandingPage() {
             <div className={`${styles.welcome_board} ${isScrolled ? styles.welcome_board_scrolled : ''}`}>
                 <div className={`${styles.welcome_content} ${isScrolled ? styles.welcome_content_scrolled : ''}`}>
                     <div className={styles.word}>
+                        <div style={{ display: "flex" }}>
+                            <svg t="1762207636465" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5589" width="100" height="100"><path d="M768 597.333333c94.208 0 170.666667 76.458667 170.666667 170.666667s-76.458667 170.666667-170.666667 170.666667-170.666667-76.458667-170.666667-170.666667 76.458667-170.666667 170.666667-170.666667zM128 230.314667c11.648 0 21.333333 8.533333 23.168 19.626666l0.298667 3.84v196.309334c0 169.984 90.282667 335.018667 229.162666 423.936a23.466667 23.466667 0 0 1-25.258666 39.509333C206.933333 818.602667 109.738667 645.546667 104.746667 464.768l-0.213334-14.677333v-196.266667a23.466667 23.466667 0 0 1 23.466667-23.466667z m406.613333-143.317334l6.186667 2.56 248.874667 115.541334c23.637333 11.008 39.68 34.645333 42.026666 61.312l0.298667 6.698666v174.677334c0 38.4-4.693333 76.330667-13.610667 112.938666a211.072 211.072 0 0 0-72.277333-4.949333c5.632-19.029333 9.984-38.570667 13.013333-58.453333l1.749334-12.714667H512V157.525333l-248.874667 115.626667v211.797333H512v331.904a299.306667 299.306667 0 0 0 44.842667-18.688c3.498667 25.258667 11.52 49.066667 23.125333 70.698667a360.789333 360.789333 0 0 1-67.968 24.917333c-179.797333-45.909333-314.538667-232.064-319.829333-433.621333l-0.170667-12.373333V273.109333c0-27.093333 14.250667-51.968 36.565333-64.981333l5.76-2.986667 248.874667-115.626666a67.968 67.968 0 0 1 51.456-2.517334z m340.736 600.618667a16.981333 16.981333 0 0 0-24.064 0L733.866667 805.034667l-49.322667-49.152a16.981333 16.981333 0 1 0-24.064 24.064l61.269333 61.269333a16.981333 16.981333 0 0 0 24.064 0l129.536-129.536a16.981333 16.981333 0 0 0 0-24.064zM896 230.314667c11.648 0 21.333333 8.533333 23.168 19.626666l0.298667 3.84v195.541334c0 50.944-7.338667 101.418667-21.034667 149.845333a213.248 213.248 0 0 0-41.813333-25.301333c9.216-35.882667 14.592-72.96 15.701333-110.293334l0.213333-14.250666V253.781333a23.466667 23.466667 0 0 1 23.466667-23.466666z" p-id="5590" fill="#ffffff"></path></svg>
+                            <h1 style={{ textDecoration: "line-through" }}>Scam</h1>
+                        </div>
                         <h1>Identify What’s Real</h1>
-                        <h2 style={{ fontFamily: "Momo Signature" }}>Detect and Verify Online Content</h2>
+                        <h2>Detect and Verify Scams</h2>
                         <p>A shared space for learning and mutual protection.
                             We believe the best way to fight scams is by sharing verified stories,
                             real experiences, and clear guidelines — so no one has to face deception alone.</p>
@@ -186,6 +211,16 @@ export function LandingPage() {
                     <div className={styles.buttonContainer}>
                         <NavLink to="" onClick={topFunction} className={styles.button}>Explore</NavLink>
                         <div onClick={() => setIsOpen(true)} className={styles.button}>Follow</div>
+                    </div>
+                </div>
+                <div className={styles.videoContainer} >
+                    <div className={styles.demoVideo_title} ref={demoVideoTitle_containerRef} onMouseEnter={flipCard_open}>
+                        <h1 style={{ fontFamily: "Momo Signature", transition: "1s" }} ref={demoVideoTitleRef}>
+                            Demo Video
+                        </h1>
+                    </div>
+                    <div className={styles.demoVideo_container} ref={demoVideoContainerRef} onMouseLeave={flipCard_close}>
+                        <iframe width="100%" height="100%" style={{ borderRadius: "10px" }} src="https://www.youtube.com/embed/DguRIuX6lvQ" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                     </div>
                 </div>
             </div>
@@ -262,36 +297,6 @@ export function LandingPage() {
                 </div>
                 <div>
                     <svg t="1761800988529" className={`${styles.icon} ${visibleSections.icon3 ? styles.visible : ''}`} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1666" width="50" height="50">
-                        <path d="M762 512L512 912 262 512l250-400z" p-id="1667" fill="white"></path>
-                    </svg>
-                </div>
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        gap: "20px", width: "95%",
-                        margin: "auto",
-                        backgroundColor: "white",
-                        borderRadius: "10px",
-                        padding: "10px",
-                    }}>
-                    <div className={`${styles.intro4} ${visibleSections.intro4 ? styles.visible : ''}`} style={{ textAlign: "center" }}>
-                        <h1>Cases</h1>
-                        <div className={styles.intro1_2}>
-                            <FinalGallery imgset={mockImgs} openSmall={false} themeColor='black' />
-                        </div>
-                    </div>
-
-                    <div className={`${styles.intro5} ${visibleSections.intro5 ? styles.visible : ''}`} style={{ textAlign: "center" }}>
-                        <h1>Demo Video</h1>
-                        <div>
-                            <iframe width="100%" style={{ aspectRatio: "20/18" }} src="https://www.youtube.com/embed/DguRIuX6lvQ" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <svg t="1761800988529" className={`${styles.icon} ${visibleSections.icon4 ? styles.visible : ''}`} viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1666" width="50" height="50">
                         <path d="M762 512L512 912 262 512l250-400z" p-id="1667" fill="white"></path>
                     </svg>
                 </div>
@@ -383,4 +388,17 @@ export function LandingPage() {
             </div>
         </div >
     );
+}
+
+function throttle(func, limit) {
+    let inThrottle;
+    return function () {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
 }
