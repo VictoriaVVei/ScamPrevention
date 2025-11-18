@@ -1,0 +1,135 @@
+#DetectionGame {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: "Arimo", sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  padding: 8px 16px 12px;
+  flex: 1;
+  overflow-y: auto;
+
+  background-color: #f8fafc;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 4px 0 8px;
+  margin-top: 20px;
+  color: #00bba7;
+}
+
+.timer {
+  margin: 0 auto 16px;
+  border: 1.65828px solid #46ecd5;
+  border-radius: 16px;
+  padding: 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  background: #f0fdfa;
+  color: #009689;
+}
+
+.bell {
+  font-size: 14px;
+}
+
+.timeText {
+  font-weight: 500;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
+  gap: 16px;
+
+  border: 0.829141px solid #e5e7eb;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1),
+    0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  background: #ffffff;
+
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+#DetectionGame h2 {
+  margin: 0;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.steps li p {
+  color: #4a5565;
+  font-size: 14px;
+}
+
+.stepCircle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #cbfbf1;
+  color: #00786f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.rememberBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 16px;
+  font-size: 14px;
+  background: #fffbeb;
+  border: 0.829141px solid #fee685;
+  border-radius: 16px;
+}
+
+p.rememberTitle {
+  font-weight: 700;
+  color: #973c00;
+}
+
+p.rememberText {
+  color: #973c00;
+}
+
+#DetectionGame p {
+  margin: 0;
+}

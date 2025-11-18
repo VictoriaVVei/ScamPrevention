@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 16px 8px;
+  background: #ffffff;
+  height: 72px;
+}
+
+.backBtn {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #00a99d;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoIcon {
+  font-size: 18px;
+}
+
+.logoText {
+  font-weight: 600;
+  font-size: 16px;
+}
