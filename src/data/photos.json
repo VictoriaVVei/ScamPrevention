@@ -1,0 +1,20 @@
+[
+  {
+    "id": "photo-1",
+    "url": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "isScam": false,
+    "shortSummary": "Photo of people working together in an office setting."
+  },
+  {
+    "id": "photo-2",
+    "url": "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "isScam": true,
+    "shortSummary": "Screenshot example that might be used as a fake payment proof."
+  },
+  {
+    "id": "photo-3",
+    "url": "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=400",
+    "isScam": true,
+    "shortSummary": "Screenshot example that might be used as a fake payment proof."
+  }
+]

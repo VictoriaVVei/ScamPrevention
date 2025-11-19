@@ -31,7 +31,7 @@ export function DetectionGame() {
 
   //----------------------------------------------
   return (
-    <div id={styles.DetectionGame}>
+    <div className={styles.DetectionGame}>
       <Header />
 
       <main className={styles.main}>
@@ -73,7 +73,7 @@ export function DetectionGame() {
               </defs>
             </svg>
           </span>
-          <span className={styles.timeText}>3:00</span>
+          <span className={styles.timeText}>5:00</span>
         </div>
 
         <section className={styles.card}>

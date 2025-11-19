@@ -1,0 +1,272 @@
+[
+  {
+    "id": "wechat-1",
+    "icon": "🧑‍🎓",
+    "title": "Mike - Classmate",
+    "text": "Do you have the class schedule?",
+    "isScam": false,
+    "shortSummary": "Normal question from a classmate about schedule.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-2",
+    "icon": "👩‍🦳",
+    "title": "Mom",
+    "text": "URGENT! I need money now!",
+    "isScam": true,
+    "shortSummary": "Message pretending to be mom urgently asking for money.",
+    "type": "Emotional"
+  },
+  {
+    "id": "wechat-3",
+    "icon": "🧑‍💼",
+    "title": "Advisor",
+    "text": "Are you available for a quick Zoom meeting about your project?",
+    "isScam": false,
+    "shortSummary": "Normal advisor asking for availability.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-4",
+    "icon": "🛍️",
+    "title": "Taobao Service",
+    "text": "Your package is held at customs. Pay 35 RMB to release it.",
+    "isScam": true,
+    "shortSummary": "Fake customs fee scam pretending to be Taobao.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "wechat-5",
+    "icon": "🧑‍🏫",
+    "title": "Professor Li",
+    "text": "Can you send me your updated project file before 5 PM?",
+    "isScam": false,
+    "shortSummary": "Regular professor request.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-6",
+    "icon": "🏦",
+    "title": "Bank Notice",
+    "text": "Your account will be frozen in 2 hours. Complete verification immediately.",
+    "isScam": true,
+    "shortSummary": "Threat-based bank scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "wechat-7",
+    "icon": "💰",
+    "title": "Investment Group",
+    "text": "We guarantee 15% return daily. Join our group now!",
+    "isScam": true,
+    "shortSummary": "Investment scam using high-return promise.",
+    "type": "Investment"
+  },
+  {
+    "id": "wechat-8",
+    "icon": "🎓",
+    "title": "Class Group Admin",
+    "text": "The exam room has changed. Please check the new location.",
+    "isScam": false,
+    "shortSummary": "Real classroom update message.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-9",
+    "icon": "📲",
+    "title": "WeChat Team",
+    "text": "Your WeChat will be disabled. Click the link to submit identity documents.",
+    "isScam": true,
+    "shortSummary": "Fake system warning using fear to steal info.",
+    "type": "Tech"
+  },
+  {
+    "id": "wechat-10",
+    "icon": "🐼",
+    "title": "Old Friend",
+    "text": "Hey, long time no see! Are you still studying in the US?",
+    "isScam": false,
+    "shortSummary": "Normal reconnection message.",
+    "type": "Emotional"
+  },
+  {
+    "id": "wechat-11",
+    "icon": "📦",
+    "title": "JD Delivery",
+    "text": "Your package is arriving today. Courier will contact you soon.",
+    "isScam": false,
+    "shortSummary": "Legitimate delivery notification.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "wechat-12",
+    "icon": "🆘",
+    "title": "Cousin",
+    "text": "I’m detained by the police. Don’t call anyone. Transfer money quickly.",
+    "isScam": true,
+    "shortSummary": "Emergency scam pretending to be family.",
+    "type": "Emotional"
+  },
+  {
+    "id": "wechat-13",
+    "icon": "📷",
+    "title": "Unknown Friend",
+    "text": "Is this you in the video?",
+    "isScam": true,
+    "shortSummary": "Malicious video phishing link scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "wechat-14",
+    "icon": "💼",
+    "title": "HR - Internship",
+    "text": "We saw your resume. Are you available for a quick interview today?",
+    "isScam": false,
+    "shortSummary": "Could be real—common HR message tone.",
+    "type": "JobContract"
+  },
+  {
+    "id": "wechat-15",
+    "icon": "🎁",
+    "title": "Rewards Center",
+    "text": "You won a gift from our lucky draw. Claim it within 10 minutes!",
+    "isScam": true,
+    "shortSummary": "Fake prize claim scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "wechat-16",
+    "icon": "🧑‍⚕️",
+    "title": "Clinic",
+    "text": "Your test results are ready. Please check your health app for details.",
+    "isScam": false,
+    "shortSummary": "Normal health check notification.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-17",
+    "icon": "🧾",
+    "title": "Utility Bill",
+    "text": "Your electricity bill is overdue. Pay now to avoid interruption.",
+    "isScam": true,
+    "shortSummary": "Fake utility bill scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "wechat-18",
+    "icon": "👨‍👩‍👧‍👦",
+    "title": "Dad",
+    "text": "I can’t log into my bank app. Can you check something for me?",
+    "isScam": false,
+    "shortSummary": "Real parent message.",
+    "type": "Emotional"
+  },
+  {
+    "id": "wechat-19",
+    "icon": "💻",
+    "title": "IT Support",
+    "text": "We detected unusual login attempts. Verify your school account here.",
+    "isScam": true,
+    "shortSummary": "Fake IT verification scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "wechat-20",
+    "icon": "🍜",
+    "title": "Roommate",
+    "text": "Where did you put the soy sauce? I can’t find it.",
+    "isScam": false,
+    "shortSummary": "Normal everyday conversation.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-21",
+    "icon": "🏪",
+    "title": "SF Express",
+    "text": "Your parcel cannot be delivered. Please update your phone number.",
+    "isScam": true,
+    "shortSummary": "Delivery scam asking for personal info.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "wechat-22",
+    "icon": "📚",
+    "title": "Study Group",
+    "text": "We are meeting today at 3 PM in the library.",
+    "isScam": false,
+    "shortSummary": "Normal study group reminder.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-23",
+    "icon": "🕹️",
+    "title": "Game Event",
+    "text": "Weekly rewards available! Click to collect your bonus.",
+    "isScam": true,
+    "shortSummary": "Game phishing link scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "wechat-24",
+    "icon": "💳",
+    "title": "Alipay",
+    "text": "Your account was logged in from a new device. Reset password now.",
+    "isScam": true,
+    "shortSummary": "Fake Alipay security notification.",
+    "type": "Tech"
+  },
+  {
+    "id": "wechat-25",
+    "icon": "🧑‍🍳",
+    "title": "Auntie",
+    "text": "I made dumplings today! Want some?",
+    "isScam": false,
+    "shortSummary": "Friendly family message.",
+    "type": "Emotional"
+  },
+  {
+    "id": "wechat-26",
+    "icon": "🏅",
+    "title": "Scholarship Office",
+    "text": "Congratulations! You qualify for a new scholarship. Fill out the form to claim.",
+    "isScam": true,
+    "shortSummary": "Fake scholarship form scam.",
+    "type": "JobContract"
+  },
+  {
+    "id": "wechat-27",
+    "icon": "📢",
+    "title": "Dorm Management",
+    "text": "Water supply will be suspended from 1pm–5pm today.",
+    "isScam": false,
+    "shortSummary": "Real dorm announcement.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "wechat-28",
+    "icon": "💘",
+    "title": "Stranger",
+    "text": "Hi… I saw you in a friend’s Moments. Want to chat?",
+    "isScam": true,
+    "shortSummary": "Romance scam initiating conversation.",
+    "type": "Emotional"
+  },
+  {
+    "id": "wechat-29",
+    "icon": "🥡",
+    "title": "Meituan Delivery",
+    "text": "Your food is arriving soon. Please keep your phone available.",
+    "isScam": false,
+    "shortSummary": "Real delivery notification.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "wechat-30",
+    "icon": "🏥",
+    "title": "Insurance Service",
+    "text": "You have an unclaimed insurance refund. Click to receive it now.",
+    "isScam": true,
+    "shortSummary": "Fake insurance refund scam.",
+    "type": "ShoppingRefund"
+  }
+]

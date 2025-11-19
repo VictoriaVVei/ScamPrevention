@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Footer.module.css";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 export function Footer() {
   //----------------------------------------------
   // Domain
@@ -26,7 +26,7 @@ export function Footer() {
   //----------------------------------------------
   return (
     <footer className={styles.footer}>
-      <div className={styles.navItem}>
+  <div className={styles.navItem} onClick={() => navigate("/detection-game")}>
         <div className={styles.icon}>
           <svg
             width="20"
@@ -99,7 +99,7 @@ export function Footer() {
         <span className={styles.label}>Add</span>
       </div>
 
-      <div className={styles.navItem}>
+      <div className={styles.navItem} onClick={() => navigate("/daily-question")}>
         <div className={styles.icon}>
           <svg
             width="20"

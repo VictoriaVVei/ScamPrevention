@@ -1,0 +1,272 @@
+[
+  {
+    "id": "tinder-1",
+    "icon": "👩",
+    "title": "Emma",
+    "text": "What kind of hobbies do you have?",
+    "isScam": false,
+    "shortSummary": "Normal small talk from a match.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-2",
+    "icon": "💋",
+    "title": "Jessica",
+    "text": "Send me $200 and we can meet tonight.",
+    "isScam": true,
+    "shortSummary": "Romance scam asking for money to meet offline.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-3",
+    "icon": "👩‍🦰",
+    "title": "Hannah",
+    "text": "Sorry, I'm new in the city. Want to grab coffee sometime?",
+    "isScam": false,
+    "shortSummary": "A normal invitation from a new match.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-4",
+    "icon": "🔥",
+    "title": "Bella",
+    "text": "Can you verify your identity here before we chat? It only takes 2 minutes: tap-verify.me",
+    "isScam": true,
+    "shortSummary": "Fake identity verification link scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-5",
+    "icon": "🎣",
+    "title": "Lily",
+    "text": "Hey… I think someone is pretending to be you on Instagram. Want the screenshot?",
+    "isScam": true,
+    "shortSummary": "Phishing tactic pretending you were impersonated.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-6",
+    "icon": "🍷",
+    "title": "Mia",
+    "text": "I'm making pasta tonight. What's your favorite dish?",
+    "isScam": false,
+    "shortSummary": "Normal casual conversation.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-7",
+    "icon": "🧳",
+    "title": "Eva",
+    "text": "I'm traveling for work right now. Can you buy me an iTunes card so I can call you?",
+    "isScam": true,
+    "shortSummary": "Classic romance scam using travel excuse.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-8",
+    "icon": "💼",
+    "title": "Sophia",
+    "text": "You seem smart. Have you ever invested before? I can teach you.",
+    "isScam": true,
+    "shortSummary": "Crypto-investment scam disguised as flirting.",
+    "type": "Investment"
+  },
+  {
+    "id": "tinder-9",
+    "icon": "👀",
+    "title": "Nina",
+    "text": "Your dog in the second photo is adorable! What's her name?",
+    "isScam": false,
+    "shortSummary": "Genuine interest-based opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-10",
+    "icon": "📸",
+    "title": "Chloe",
+    "text": "My pics won’t load on Tinder. Add me on this app instead: pic-share247.net",
+    "isScam": true,
+    "shortSummary": "Malicious link disguised as a photo-sharing app.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-11",
+    "icon": "👑",
+    "title": "Eliza",
+    "text": "I'm deleting Tinder soon. Want my number before I go?",
+    "isScam": false,
+    "shortSummary": "Urgent but can be real.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-12",
+    "icon": "💘",
+    "title": "Isabella",
+    "text": "Do you believe in soulmates?",
+    "isScam": false,
+    "shortSummary": "Typical Tinder romantic opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-13",
+    "icon": "💝",
+    "title": "Angel",
+    "text": "I sent you a gift 💝 tap here to claim 👉 claim-gift-now.co",
+    "isScam": true,
+    "shortSummary": "Fake gift phishing scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-14",
+    "icon": "🆘",
+    "title": "Maria",
+    "text": "This is embarrassing… but my wallet got stolen. Could you help me with $50?",
+    "isScam": true,
+    "shortSummary": "Small-amount emotional manipulation scam.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-15",
+    "icon": "😅",
+    "title": "Katie",
+    "text": "Oops I think I swiped too fast lol. What are you studying?",
+    "isScam": false,
+    "shortSummary": "Normal friendly opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-16",
+    "icon": "🏋️‍♀️",
+    "title": "Zoe",
+    "text": "You look like you go to the gym. What’s your workout routine?",
+    "isScam": false,
+    "shortSummary": "Common fitness conversation starter.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-17",
+    "icon": "💼",
+    "title": "Michelle",
+    "text": "I know a platform that doubled my savings in 2 weeks. Want to try?",
+    "isScam": true,
+    "shortSummary": "Crypto / trading scam often seen on dating apps.",
+    "type": "Investment"
+  },
+  {
+    "id": "tinder-18",
+    "icon": "🐱",
+    "title": "Jasmine",
+    "text": "You look familiar… did we go to the same school?",
+    "isScam": false,
+    "shortSummary": "Normal “familiarity” opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-19",
+    "icon": "🤳",
+    "title": "Yuki",
+    "text": "Can you video call? I want to make sure you're real.",
+    "isScam": false,
+    "shortSummary": "A cautious but real request.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-20",
+    "icon": "⚠️",
+    "title": "Stranger",
+    "text": "Someone posted your info on a forum… want proof?",
+    "isScam": true,
+    "shortSummary": "Fear-based phishing scam playing on anxiety.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-21",
+    "icon": "📍",
+    "title": "Lana",
+    "text": "I live just 5 minutes away 👀 want to hang out?",
+    "isScam": false,
+    "shortSummary": "Could be real or risky, but not inherently a scam.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-22",
+    "icon": "💸",
+    "title": "Sophie",
+    "text": "I lost my hotel key and the front desk needs a deposit… can you help?",
+    "isScam": true,
+    "shortSummary": "Classic travel emergency scam.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-23",
+    "icon": "🎮",
+    "title": "Aria",
+    "text": "Do you play games? I’m looking for someone to duo with.",
+    "isScam": false,
+    "shortSummary": "Normal interest-based opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-24",
+    "icon": "💳",
+    "title": "Maya",
+    "text": "Before we meet, can you confirm your identity here for safety?",
+    "isScam": true,
+    "shortSummary": "Identity-verification scam targeting dating app users.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-25",
+    "icon": "🌍",
+    "title": "Anna",
+    "text": "I'm from Germany originally. How long have you been here?",
+    "isScam": false,
+    "shortSummary": "Normal background-sharing conversation.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-26",
+    "icon": "💼",
+    "title": "Becca",
+    "text": "I run an online boutique. Want to be a paid model for us?",
+    "isScam": true,
+    "shortSummary": "Fake modeling job leading to upfront fees.",
+    "type": "JobContract"
+  },
+  {
+    "id": "tinder-27",
+    "icon": "🎤",
+    "title": "Sienna",
+    "text": "What kind of music do you listen to?",
+    "isScam": false,
+    "shortSummary": "Standard small-talk opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-28",
+    "icon": "👗",
+    "title": "Vanessa",
+    "text": "Click to see my new photos 😘 insta-gallery.co/vn88",
+    "isScam": true,
+    "shortSummary": "Malware disguised as photo gallery.",
+    "type": "Tech"
+  },
+  {
+    "id": "tinder-29",
+    "icon": "🥂",
+    "title": "Olivia",
+    "text": "I'm going to a rooftop bar tonight. Want to join?",
+    "isScam": false,
+    "shortSummary": "Realistic invitation.",
+    "type": "Emotional"
+  },
+  {
+    "id": "tinder-30",
+    "icon": "🔐",
+    "title": "Stranger",
+    "text": "Your Tinder profile was reported. Verify here to avoid suspension.",
+    "isScam": true,
+    "shortSummary": "Fake Tinder security alert.",
+    "type": "Tech"
+  }
+]

@@ -1,0 +1,161 @@
+[
+    {
+        "typeName": "Impersonation",
+        "tags": [
+            "Fake institutions",
+            "Fake customer service",
+            "Fake police/government",
+            "Fake bank notices",
+            "Fake family or friends",
+            "Fake school or university emails",
+            "Fake delivery companies"
+        ],
+        "explanation": "Scammers pretend to be trusted individuals or organizations (bank, school, government, family) to gain trust quickly. They create urgency and pressure the victim into sharing personal information, clicking malicious links, or making payments.",
+        "warningSignals": [
+            "Urgent tone demanding immediate action",
+            "Requests for passwords, verification codes, or ID photos",
+            "Email domains or links slightly different from official ones",
+            "Unusual wording unlike how real institutions communicate",
+            "Unexpected calls or messages claiming to be 'official support'"
+        ],
+        "preventionTips": [
+            "Stay calm when facing urgent requests",
+            "Verify identity through official websites or phone numbers",
+            "Never share verification codes",
+            "Check sender email domains carefully",
+            "For family emergencies, always confirm through a direct phone or video call"
+        ]
+    },
+    {
+        "typeName": "Emotional",
+        "tags": [
+            "Romance scams",
+            "Online relationship manipulation",
+            "Sympathy scams",
+            "Fake emergencies",
+            "Love + investment scams",
+            "False identity profiles"
+        ],
+        "explanation": "Scammers build emotional connections through romance or friendship. Once trust is gained, they introduce excuses involving financial help, emergencies, or investment opportunities.",
+        "warningSignals": [
+            "Quick emotional attachment from someone you just met",
+            "Requests for money, gift cards, or financial support",
+            "Refusal to video call or meet in person",
+            "Stories about accidents, stolen wallets, or sudden crises",
+            "A shift from romance to money or investment topics"
+        ],
+        "preventionTips": [
+            "Be cautious with online relationships",
+            "Never send money to someone you haven’t met in person",
+            "Do not join investment platforms recommended by online acquaintances",
+            "Insist on verified video calls",
+            "Discuss suspicious interactions with trusted friends or family"
+        ]
+    },
+    {
+        "typeName": "Investment",
+        "tags": [
+            "Guaranteed high returns",
+            "Crypto pump-and-dump groups",
+            "Fake financial mentors",
+            "Unregulated trading platforms",
+            "Stock tip scams",
+            "Get-rich-quick programs"
+        ],
+        "explanation": "Scammers promise unrealistically high or guaranteed profits. They often use fabricated screenshots, fake testimonials, and social engineering to push victims into depositing money into fraudulent investment sites.",
+        "warningSignals": [
+            "Promises of high returns with zero risk",
+            "Pressure to 'join quickly before opportunity is gone'",
+            "Requests to deposit money into unknown platforms",
+            "Difficulty withdrawing funds unless you ‘pay more’",
+            "Investment advice from strangers met online"
+        ],
+        "preventionTips": [
+            "Remember: high return always means high risk",
+            "Only invest through verified and regulated platforms",
+            "Never trust investment groups from strangers",
+            "Research the company and financial licenses",
+            "Consult certified financial advisors before investing"
+        ]
+    },
+    {
+        "typeName": "ShoppingRefund",
+        "tags": [
+            "Fake delivery delays",
+            "Refund scams",
+            "Package held at customs",
+            "Payment correction requests",
+            "Fake courier notifications",
+            "Fake online store customer service"
+        ],
+        "explanation": "Scammers pretend to be delivery services or shopping platforms, claiming failed deliveries, refunds, or fees due. Their goal is to steal money or account credentials via fake links.",
+        "warningSignals": [
+            "Messages claiming packages are held or need extra fees",
+            "Links to unofficial delivery tracking websites",
+            "Requests for bank card details or passwords",
+            "Refunds that require you to 'pay a verification fee'",
+            "Unexpected calls from supposed 'customer service'"
+        ],
+        "preventionTips": [
+            "Check delivery status only through official apps",
+            "Refunds never require passwords or extra payments",
+            "Avoid clicking links from text messages or emails",
+            "Contact the platform through verified customer service channels",
+            "Do not pay any fee outside the official website"
+        ]
+    },
+    {
+        "typeName": "Tech",
+        "tags": [
+            "Phishing links",
+            "Fake login pages",
+            "Malware attachments",
+            "Fake device virus alerts",
+            "AI voice scams",
+            "Account security warnings",
+            "Fake app notifications"
+        ],
+        "explanation": "These scams use technical tricks—fake login pages, virus alerts, malicious apps, or phishing emails—to steal personal information or install malware.",
+        "warningSignals": [
+            "Pop-ups claiming your device is infected",
+            "Email attachments requiring enabling macros",
+            "URLs that mimic official sites with slight spelling differences",
+            "Requests for remote access to your device",
+            "Unexpected login alerts with suspicious links"
+        ],
+        "preventionTips": [
+            "Download apps only from official app stores",
+            "Ignore pop-up alerts about virus infections",
+            "Verify security alerts directly in your account settings",
+            "Keep your device and antivirus software updated",
+            "Avoid downloading suspicious attachments or zip files"
+        ]
+    },
+    {
+        "typeName": "JobContract",
+        "tags": [
+            "Fake job offers",
+            "Unrealistic salaries",
+            "Advance fee scams",
+            "Fake HR onboarding emails",
+            "Scam rental listings",
+            "Requests for SSN/ID too early",
+            "Paid training scams"
+        ],
+        "explanation": "Scammers pose as HR, landlords, or hiring platforms offering high-paying jobs, internships, or apartments. They often ask victims to pay deposits, provide sensitive documents, or download malicious attachments.",
+        "warningSignals": [
+            "Job offers without interviews",
+            "Requests to pay deposits, uniforms, or training fees",
+            "Unverified HR contacts using personal email addresses",
+            "Companies that do not appear in official business directories",
+            "Asking for passport numbers or SSN early in the process"
+        ],
+        "preventionTips": [
+            "Legitimate employers never charge applicants fees",
+            "Verify company identity on LinkedIn or official websites",
+            "Do not send ID documents to unknown recruiters",
+            "Be cautious with rental listings requiring deposits upfront",
+            "Refuse to sign contracts without verifying company legitimacy"
+        ]
+    }
+]

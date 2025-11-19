@@ -1,0 +1,272 @@
+[
+  {
+    "id": "mail-1",
+    "icon": "✉️",
+    "title": "Canvas",
+    "text": "New Assignment Posted: Week 5 Discussion. Your instructor has posted a new assignment in SRID.",
+    "isScam": false,
+    "shortSummary": "Real Canvas assignment notification.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-2",
+    "icon": "✉️",
+    "title": "Investment Opportunities",
+    "text": "🚀 Make $80,000/month from home with our exclusive trading AI! Join now before spots run out.",
+    "isScam": true,
+    "shortSummary": "Unrealistic high-return investment through email.",
+    "type": "Investment"
+  },
+  {
+    "id": "mail-3",
+    "icon": "✉️",
+    "title": "USPS Delivery Failure",
+    "text": "We attempted to deliver your package today. Please confirm your address to reschedule.",
+    "isScam": true,
+    "shortSummary": "Delivery phishing email with fake tracking link.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "mail-4",
+    "icon": "✉️",
+    "title": "Your Bank Statement",
+    "text": "Your monthly statement is ready. Please log in to review your balance.",
+    "isScam": true,
+    "shortSummary": "Fake bank login page phishing email.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-5",
+    "icon": "✉️",
+    "title": "CMU Library",
+    "text": "Your requested book is available for pickup. Show your student ID at the counter.",
+    "isScam": false,
+    "shortSummary": "Legitimate campus email.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-6",
+    "icon": "✉️",
+    "title": "Tax Refund Processing",
+    "text": "You are eligible for a $15 tax refund. Submit your information within 24 hours.",
+    "isScam": true,
+    "shortSummary": "Urgency-based refund scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "mail-7",
+    "icon": "✉️",
+    "title": "Apartment Viewing Confirmation",
+    "text": "Your apartment viewing is confirmed for Friday at 3 PM. Please reply if rescheduling is needed.",
+    "isScam": false,
+    "shortSummary": "Professional and normal housing email.",
+    "type": "JobContract"
+  },
+  {
+    "id": "mail-8",
+    "icon": "✉️",
+    "title": "Recruitment Team",
+    "text": "We found your resume online and think you are a great fit for a remote assistant role. Apply here.",
+    "isScam": true,
+    "shortSummary": "Fake remote job with phishing link.",
+    "type": "JobContract"
+  },
+  {
+    "id": "mail-9",
+    "icon": "✉️",
+    "title": "Google Account Security Alert",
+    "text": "A sign-in attempt was blocked. Review your recent activity if this was not you.",
+    "isScam": false,
+    "shortSummary": "Realistic security alert (ambiguous).",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-10",
+    "icon": "✉️",
+    "title": "Research Collaboration Inquiry",
+    "text": "I recently read your project summary and would like to explore collaboration opportunities.",
+    "isScam": false,
+    "shortSummary": "Legitimate cold outreach from academic professional.",
+    "type": "Emotional"
+  },
+  {
+    "id": "mail-11",
+    "icon": "✉️",
+    "title": "IT Department",
+    "text": "Your mailbox storage is full. Log in to remediate and prevent message loss.",
+    "isScam": true,
+    "shortSummary": "Fake IT phishing email.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-12",
+    "icon": "✉️",
+    "title": "Congratulations!",
+    "text": "You have been selected to receive a $3,000 academic scholarship. No application required.",
+    "isScam": true,
+    "shortSummary": "Fake scholarship award scam.",
+    "type": "Emotional"
+  },
+  {
+    "id": "mail-13",
+    "icon": "✉️",
+    "title": "Amazon Billing Notice",
+    "text": "Your Amazon account shows a recent purchase of $799. If unauthorized, verify immediately.",
+    "isScam": true,
+    "shortSummary": "Fake Amazon fraud alert.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-14",
+    "icon": "✉️",
+    "title": "Professor Williams",
+    "text": "Please visit my office tomorrow at 10 AM. I would like to discuss your project.",
+    "isScam": false,
+    "shortSummary": "Normal professor email.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-15",
+    "icon": "✉️",
+    "title": "Urgent: Your Friend Needs Help",
+    "text": "Your friend was in an accident. We need immediate assistance. Contact us only via email.",
+    "isScam": true,
+    "shortSummary": "Emergency scam leveraging fear.",
+    "type": "Emotional"
+  },
+  {
+    "id": "mail-16",
+    "icon": "✉️",
+    "title": "Order Receipt",
+    "text": "Here is the receipt for your recent purchase. Download the attached PDF.",
+    "isScam": true,
+    "shortSummary": "Malicious attachment disguised as receipt.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-17",
+    "icon": "✉️",
+    "title": "Invoice #34721",
+    "text": "Your invoice for last month is ready. Please confirm payment.",
+    "isScam": true,
+    "shortSummary": "Fake invoice targeting businesses.",
+    "type": "JobContract"
+  },
+  {
+    "id": "mail-18",
+    "icon": "✉️",
+    "title": "PayPal",
+    "text": "Your PayPal account has been limited. Restore access by verifying your information.",
+    "isScam": true,
+    "shortSummary": "Fake PayPal account suspension.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-19",
+    "icon": "✉️",
+    "title": "Tech Digest Newsletter",
+    "text": "Welcome to the Daily Tech Digest! Your first summary will arrive tomorrow.",
+    "isScam": false,
+    "shortSummary": "Normal newsletter subscription confirmation.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-20",
+    "icon": "✉️",
+    "title": "HR Onboarding Documents",
+    "text": "Please download the onboarding forms and complete within 24 hours.",
+    "isScam": true,
+    "shortSummary": "Fake HR attachment used in malware campaigns.",
+    "type": "JobContract"
+  },
+  {
+    "id": "mail-21",
+    "icon": "✉️",
+    "title": "Apple Support",
+    "text": "Your Apple ID has been locked for security reasons. Verify to regain access.",
+    "isScam": true,
+    "shortSummary": "Fake Apple security lockout.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-22",
+    "icon": "✉️",
+    "title": "Shipping Update",
+    "text": "Your DHL package is arriving tomorrow. No action needed.",
+    "isScam": false,
+    "shortSummary": "Legitimate shipping update.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "mail-23",
+    "icon": "✉️",
+    "title": "Conference Registration",
+    "text": "Your registration is confirmed. See you at the event!",
+    "isScam": false,
+    "shortSummary": "Normal conference confirmation.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-24",
+    "icon": "✉️",
+    "title": "Netflix Billing",
+    "text": "Your payment was declined. Update your billing details to avoid interruption.",
+    "isScam": true,
+    "shortSummary": "Fake Netflix billing phishing.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "mail-25",
+    "icon": "✉️",
+    "title": "Student Financial Aid",
+    "text": "Your FAFSA documents require minor corrections. Log in through the official portal.",
+    "isScam": false,
+    "shortSummary": "Realistic but legitimate reminder.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-26",
+    "icon": "✉️",
+    "title": "Security Alert",
+    "text": "Unusual outbound traffic detected from your account. Change your password immediately.",
+    "isScam": true,
+    "shortSummary": "Fake cybersecurity scare tactic.",
+    "type": "Tech"
+  },
+  {
+    "id": "mail-27",
+    "icon": "✉️",
+    "title": "Amazon Delivery Refund",
+    "text": "We accidentally charged you twice. Click here to claim your refund.",
+    "isScam": true,
+    "shortSummary": "Refund scam pretending to give money back.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "mail-28",
+    "icon": "✉️",
+    "title": "Campus Housing",
+    "text": "Maintenance will enter your room for air filter replacement next week.",
+    "isScam": false,
+    "shortSummary": "Real housing office message.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "mail-29",
+    "icon": "✉️",
+    "title": "Journal Review Request",
+    "text": "Would you be willing to review a manuscript for our journal?",
+    "isScam": false,
+    "shortSummary": "Legitimate but unexpected academic invite.",
+    "type": "Emotional"
+  },
+  {
+    "id": "mail-30",
+    "icon": "✉️",
+    "title": "DocuSign",
+    "text": "A document is waiting for your signature. Please review it securely.",
+    "isScam": true,
+    "shortSummary": "Fake DocuSign phishing attachment.",
+    "type": "JobContract"
+  }
+]

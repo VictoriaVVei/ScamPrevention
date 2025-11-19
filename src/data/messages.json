@@ -1,0 +1,272 @@
+[
+  {
+    "id": "msg-1",
+    "icon": "📦",
+    "title": "FedEx Delivery",
+    "text": "Package requires customs fee payment. Pay at delivery location.",
+    "isScam": true,
+    "shortSummary": "Delivery scam charging fake customs fee.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "msg-2",
+    "icon": "🏛",
+    "title": "USCISS Alert",
+    "text": "URGENT: I-20 issue. Submit passport info here: http://uscis-fix-docs.com",
+    "isScam": true,
+    "shortSummary": "Fake USCIS alert stealing identity.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-3",
+    "icon": "💳",
+    "title": "Bank of America",
+    "text": "Unusual login attempt detected. Verify your account immediately.",
+    "isScam": true,
+    "shortSummary": "Bank phishing scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-4",
+    "icon": "📞",
+    "title": "Mom",
+    "text": "Honey can you send me your phone number again? My contacts reset.",
+    "isScam": false,
+    "shortSummary": "Real parent asking for phone number again.",
+    "type": "Emotional"
+  },
+  {
+    "id": "msg-5",
+    "icon": "🚗",
+    "title": "Uber",
+    "text": "Your driver is arriving now. Please wait nearby.",
+    "isScam": false,
+    "shortSummary": "Legitimate ride-share alert.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-6",
+    "icon": "🛍",
+    "title": "Amazon",
+    "text": "Your account is locked for security. Restore access at amazon-check.biz",
+    "isScam": true,
+    "shortSummary": "Fake Amazon lockout phishing.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-7",
+    "icon": "💼",
+    "title": "Recruiter",
+    "text": "You've been shortlisted for a $7,000/month remote job. Reply YES to continue.",
+    "isScam": true,
+    "shortSummary": "Fake job scam.",
+    "type": "JobContract"
+  },
+  {
+    "id": "msg-8",
+    "icon": "🏫",
+    "title": "Campus Safety",
+    "text": "Police activity near campus. Stay indoors until further notice.",
+    "isScam": false,
+    "shortSummary": "Legitimate campus safety alert.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-9",
+    "icon": "❤️",
+    "title": "Unknown",
+    "text": "Hi… my phone broke and I lost your number. Is this still you?",
+    "isScam": true,
+    "shortSummary": "Romance scam opener.",
+    "type": "Emotional"
+  },
+  {
+    "id": "msg-10",
+    "icon": "📱",
+    "title": "Apple ID",
+    "text": "Your Apple ID was used on a new device. If this wasn't you, secure your account.",
+    "isScam": false,
+    "shortSummary": "Could be a real or scam security alert.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-11",
+    "icon": "🏦",
+    "title": "IRS",
+    "text": "You owe immediate tax payments. Failure to respond will result in penalties.",
+    "isScam": true,
+    "shortSummary": "Fake IRS threat scam.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-12",
+    "icon": "🎁",
+    "title": "Gift Center",
+    "text": "You've won an iPad! Claim your reward now.",
+    "isScam": true,
+    "shortSummary": "Free gift scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "msg-13",
+    "icon": "🏠",
+    "title": "Landlord",
+    "text": "Rent reminder for this month. Please confirm after payment.",
+    "isScam": false,
+    "shortSummary": "Normal rent reminder.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-14",
+    "icon": "📸",
+    "title": "Cloud Storage",
+    "text": "Your storage is almost full. Upgrade to avoid losing photos.",
+    "isScam": false,
+    "shortSummary": "Legit cloud storage upgrade reminder.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-15",
+    "icon": "🆘",
+    "title": "Emergency Contact",
+    "text": "Your friend was in an accident. Reply immediately! DO NOT call.",
+    "isScam": true,
+    "shortSummary": "Emergency scam blocking verification.",
+    "type": "Emotional"
+  },
+  {
+    "id": "msg-16",
+    "icon": "⚙️",
+    "title": "System Notification",
+    "text": "Your phone is infected. Tap here to remove viruses.",
+    "isScam": true,
+    "shortSummary": "Fake virus alert malware link.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-17",
+    "icon": "🏦",
+    "title": "Chase",
+    "text": "Your scheduled payment of $1,245 was processed.",
+    "isScam": false,
+    "shortSummary": "Real bank payment alert.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-18",
+    "icon": "🧾",
+    "title": "Receipt",
+    "text": "Your purchase is confirmed. View receipt here: bit.ly/receipt44",
+    "isScam": true,
+    "shortSummary": "Fake receipt malware link.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-19",
+    "icon": "🧑‍⚕️",
+    "title": "Clinic",
+    "text": "Your lab results are ready. Log into your health portal to view.",
+    "isScam": false,
+    "shortSummary": "Normal health notification.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-20",
+    "icon": "💰",
+    "title": "Cash App",
+    "text": "You received $750 from Alex. Claim before it expires.",
+    "isScam": true,
+    "shortSummary": "Fake money transfer scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "msg-21",
+    "icon": "🏦",
+    "title": "Wells Fargo",
+    "text": "Your account has been temporarily locked. Restore at wells-login-help.com",
+    "isScam": true,
+    "shortSummary": "Fake bank lockout scam.",
+    "type": "Tech"
+  },
+  {
+    "id": "msg-22",
+    "icon": "📢",
+    "title": "School Admin",
+    "text": "Campus shuttle will stop service at 7pm today.",
+    "isScam": false,
+    "shortSummary": "Normal school announcement.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-23",
+    "icon": "🚚",
+    "title": "UPS",
+    "text": "We couldn't deliver your parcel. Update your address now.",
+    "isScam": true,
+    "shortSummary": "Fake delivery address scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "msg-24",
+    "icon": "👨‍⚕️",
+    "title": "Health Center",
+    "text": "Reminder: Your appointment is tomorrow at 11 AM.",
+    "isScam": false,
+    "shortSummary": "Real medical appointment reminder.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-25",
+    "icon": "🧑‍✈️",
+    "title": "Airline Alert",
+    "text": "Your flight has a schedule update. Check the latest details.",
+    "isScam": false,
+    "shortSummary": "Normal airline update.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-26",
+    "icon": "💵",
+    "title": "Loan Offer",
+    "text": "Get approved for a $20,000 loan instantly. No credit check.",
+    "isScam": true,
+    "shortSummary": "Loan scam targeting high-risk consumers.",
+    "type": "Investment"
+  },
+  {
+    "id": "msg-27",
+    "icon": "📦",
+    "title": "Package Center",
+    "text": "Your package is waiting. Pay 12 RMB service fee to receive it.",
+    "isScam": true,
+    "shortSummary": "Fake package service fee scam.",
+    "type": "ShoppingRefund"
+  },
+  {
+    "id": "msg-28",
+    "icon": "💼",
+    "title": "Interview Team",
+    "text": "Your interview is confirmed for tomorrow at 2 PM.",
+    "isScam": false,
+    "shortSummary": "Legitimate interview reminder.",
+    "type": "JobContract"
+  },
+  {
+    "id": "msg-29",
+    "icon": "📱",
+    "title": "Carrier Notice",
+    "text": "Your phone plan is expiring. Renew to avoid service interruption.",
+    "isScam": false,
+    "shortSummary": "Normal carrier renewal message.",
+    "type": "Impersonation"
+  },
+  {
+    "id": "msg-30",
+    "icon": "🎰",
+    "title": "Lucky Spin",
+    "text": "You have 1 free spin left! Claim your prize now!",
+    "isScam": true,
+    "shortSummary": "Gambling-style scam link.",
+    "type": "Tech"
+  }
+]

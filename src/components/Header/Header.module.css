@@ -2,32 +2,32 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 12px 16px 8px;
+  padding: 1rem;
   background: #ffffff;
-  height: 72px;
+  height: 4.5rem;
 }
 
 .backBtn {
   border: none;
   background: transparent;
-  font-size: 14px;
-  color: #00a99d;
+  font-size: 0.875rem;
+  color: #18a193;
   cursor: pointer;
   text-align: left;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .logoIcon {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .logoText {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
 }

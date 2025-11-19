@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "question": "Which is a common warning sign of an impersonation scam?",
+    "options": [
+      "Friendly greeting",
+      "Long explanation",
+      "Urgent request for action",
+      "No attachments"
+    ],
+    "correctAnswer": 2,
+    "whyCorrect": "Impersonation scams commonly create pressure by using urgent language so victims respond before thinking.",
+    "whyIncorrect": [
+      "Scammers can also greet politely; friendliness does not indicate safety.",
+      "Long explanation is irrelevant — real and fake messages can both be long.",
+      "This is the correct answer.",
+      "Having no attachment doesn't indicate safety; many scams don't use attachments."
+    ]
+  },
+  {
+    "id": 2,
+    "question": "A stranger online expresses strong romantic interest quickly and asks for money. What scam is this?",
+    "options": [
+      "Tech Scam",
+      "Emotional/Romance Scam",
+      "Investment Scam",
+      "Shopping Refund Scam"
+    ],
+    "correctAnswer": 1,
+    "whyCorrect": "Fast emotional bonding followed by money requests is the core pattern of romance/emotional scams.",
+    "whyIncorrect": [
+      "Tech scams rely on fake alerts or phishing, not emotional manipulation.",
+      "Investment scams involve financial promises, not romantic bonding.",
+      "Refund scams relate to online shopping or delivery, not relationships."
+    ]
+  },
+  {
+    "id": 3,
+    "question": "A message says your package is held and requires a small payment. This is likely:",
+    "options": [
+      "Job Scam",
+      "Shopping/Refund Scam",
+      "Investment Scam",
+      "Emotional Scam"
+    ],
+    "correctAnswer": 1,
+    "whyCorrect": "Scams involving fake delivery issues or refund requests fall under shopping/refund scams.",
+    "whyIncorrect": [
+      "Job scams involve employment offers or fees, not package issues.",
+      "Investment scams focus on money growth, not logistics.",
+      "Emotional scams rely on personal feelings, not package notifications."
+    ]
+  }
+]
