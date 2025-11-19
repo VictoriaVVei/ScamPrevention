@@ -8,7 +8,7 @@ export function StyleGuide() {
 
 	return (
 		<div className={styles.page}>
-			{/* 0. Overview (English, no Landing Page UI) */}
+			{/* 0. Overview */}
 			<section className={styles.hero}>
 				<div className={styles.container}>
 					<div className={styles.kicker}>Scam Hub · UI Style Guide</div>
@@ -17,7 +17,7 @@ export function StyleGuide() {
 						This guide documents the exact UI patterns used across the app (excluding Landing Page UI): logo, colors, typography, page layout (id + .main), buttons in use, icons, dialogs (Phone format), navigation, cards, tags, and code tokens.
 					</p>
 					<div className={styles.pillNav}>
-						{["logo","colors","type","layout","buttons","icons","dialogs","navigation","cards","components","code","onepager"].map(id => (
+						{["logo", "colors", "type", "layout", "buttons", "icons", "dialogs", "navigation", "cards", "components", "code", "onepager"].map(id => (
 							<a key={id} className={styles.anchor} href={`#${id}`}>{id}</a>
 						))}
 					</div>
@@ -28,17 +28,15 @@ export function StyleGuide() {
 			<section id="logo" className={styles.section}>
 				<div className={styles.container}>
 					<h2 className={styles.h2}>1. Logo</h2>
-					<p className={styles.caption}>Final logo, min size 24×24, usable on light and dark backgrounds.</p>
+					<p className={styles.caption}>Word logo and svg logo</p>
 					<div className={styles.logoRow} style={{ marginTop: 12 }}>
-						<img className={styles.logo} src="/img/logo.png" alt="Scam Hub logo" />
-						<div className={`${styles.logoBox} ${styles.bgLight}`}>
-							<img className={styles.logo} src="/img/logo.png" alt="Logo on light" />
-						</div>
 						<div className={`${styles.logoBox} ${styles.bgDark}`}>
 							<img className={styles.logo} src="/img/logo.png" alt="Logo on dark" />
 						</div>
 					</div>
-					<div className={styles.caption} style={{ marginTop: 8 }}>Don’t: stretch, recolor, add outlines/glows.</div>
+					<div>
+						<svg t="1762207636465" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5589" width="40" height="40"><path d="M768 597.333333c94.208 0 170.666667 76.458667 170.666667 170.666667s-76.458667 170.666667-170.666667 170.666667-170.666667-76.458667-170.666667-170.666667 76.458667-170.666667 170.666667-170.666667zM128 230.314667c11.648 0 21.333333 8.533333 23.168 19.626666l0.298667 3.84v196.309334c0 169.984 90.282667 335.018667 229.162666 423.936a23.466667 23.466667 0 0 1-25.258666 39.509333C206.933333 818.602667 109.738667 645.546667 104.746667 464.768l-0.213334-14.677333v-196.266667a23.466667 23.466667 0 0 1 23.466667-23.466667z m406.613333-143.317334l6.186667 2.56 248.874667 115.541334c23.637333 11.008 39.68 34.645333 42.026666 61.312l0.298667 6.698666v174.677334c0 38.4-4.693333 76.330667-13.610667 112.938666a211.072 211.072 0 0 0-72.277333-4.949333c5.632-19.029333 9.984-38.570667 13.013333-58.453333l1.749334-12.714667H512V157.525333l-248.874667 115.626667v211.797333H512v331.904a299.306667 299.306667 0 0 0 44.842667-18.688c3.498667 25.258667 11.52 49.066667 23.125333 70.698667a360.789333 360.789333 0 0 1-67.968 24.917333c-179.797333-45.909333-314.538667-232.064-319.829333-433.621333l-0.170667-12.373333V273.109333c0-27.093333 14.250667-51.968 36.565333-64.981333l5.76-2.986667 248.874667-115.626666a67.968 67.968 0 0 1 51.456-2.517334z m340.736 600.618667a16.981333 16.981333 0 0 0-24.064 0L733.866667 805.034667l-49.322667-49.152a16.981333 16.981333 0 1 0-24.064 24.064l61.269333 61.269333a16.981333 16.981333 0 0 0 24.064 0l129.536-129.536a16.981333 16.981333 0 0 0 0-24.064zM896 230.314667c11.648 0 21.333333 8.533333 23.168 19.626666l0.298667 3.84v195.541334c0 50.944-7.338667 101.418667-21.034667 149.845333a213.248 213.248 0 0 0-41.813333-25.301333c9.216-35.882667 14.592-72.96 15.701333-110.293334l0.213333-14.250666V253.781333a23.466667 23.466667 0 0 1 23.466667-23.466666z" p-id="5590" fill="#009689"></path></svg>
+					</div>
 				</div>
 			</section>
 
@@ -47,7 +45,7 @@ export function StyleGuide() {
 				<div className={styles.container}>
 					<h2 className={styles.h2}>2. Color System</h2>
 					<div className={`${styles.grid} ${styles.gridCols4}`} style={{ marginTop: 8 }}>
-						{[{name:'Primary',var:'--primary'},{name:'Teal (secondary usage)',var:'--accent'},{name:'Accent Blue',var:'--secondary'}].map(c => (
+						{[{ name: 'Primary', var: '--primary' }, { name: 'Teal (secondary usage)', var: '--accent' }, { name: 'Accent Blue', var: '--secondary' }].map(c => (
 							<div key={c.name} className={styles.swatch}>
 								<div className={styles.swatchColor} style={{ background: `var(${c.var})` }} />
 								<div className={styles.swatchMeta}>{c.name} · {c.var}</div>
@@ -55,7 +53,7 @@ export function StyleGuide() {
 						))}
 					</div>
 					<div className={`${styles.grid} ${styles.gridCols4}`} style={{ marginTop: 8 }}>
-						{["--gray-900","--gray-700","--gray-600","--gray-300","--gray-200","--gray-100","--white"].map(v => (
+						{["--gray-900", "--gray-700", "--gray-600", "--gray-300", "--gray-200", "--gray-100", "--white"].map(v => (
 							<div key={v} className={styles.swatch}>
 								<div className={styles.swatchColor} style={{ background: `var(${v})` }} />
 								<div className={styles.swatchMeta}>{v}</div>
@@ -63,7 +61,7 @@ export function StyleGuide() {
 						))}
 					</div>
 					<div className={`${styles.grid} ${styles.gridCols4}`} style={{ marginTop: 8 }}>
-						{[{name:'Success',var:'--success'},{name:'Warning',var:'--warning'},{name:'Error',var:'--error'}].map(c => (
+						{[{ name: 'Success', var: '--success' }, { name: 'Warning', var: '--warning' }, { name: 'Error', var: '--error' }].map(c => (
 							<div key={c.name} className={styles.swatch}>
 								<div className={styles.swatchColor} style={{ background: `var(${c.var})` }} />
 								<div className={styles.swatchMeta}>{c.name} · {c.var}</div>
@@ -94,7 +92,7 @@ export function StyleGuide() {
 					<h2 className={styles.h2}>4. Page Layout Pattern</h2>
 					<p className={styles.body}>Each page uses an id root with 100vh and a .main that flexes, with overflow-y for inner scroll. Entry animation via keyframes.</p>
 					<pre className={styles.code}>
-{`#DetectionResult {
+						{`#DetectionResult {
 	width: 100%;
 	height: 100vh;
 	background: #F8FAFC;
@@ -140,9 +138,9 @@ export function StyleGuide() {
 					<h2 className={styles.h2}>6. Icons</h2>
 					<p className={styles.caption}>Source: iconfont.cn. Size varies by context (common: 16 / 20 / 24).</p>
 					<div className={styles.demoRow} style={{ marginTop: 8 }}>
-						<svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="#4A5565" strokeWidth="2" fill="none"/></svg>
-						<svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v4h1m-1-12a10 10 0 100 20 10 10 0 000-20z" stroke="#4A5565" strokeWidth="2" fill="none"/></svg>
-						<svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86l-8 14A1 1 0 003.1 19h17.8a1 1 0 00.87-1.5l-8-14a1 1 0 00-1.74 0z" stroke="#4A5565" strokeWidth="2" fill="none"/></svg>
+						<svg width="16" height="16" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="#4A5565" strokeWidth="2" fill="none" /></svg>
+						<svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v4h1m-1-12a10 10 0 100 20 10 10 0 000-20z" stroke="#4A5565" strokeWidth="2" fill="none" /></svg>
+						<svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01M10.29 3.86l-8 14A1 1 0 003.1 19h17.8a1 1 0 00.87-1.5l-8-14a1 1 0 00-1.74 0z" stroke="#4A5565" strokeWidth="2" fill="none" /></svg>
 					</div>
 					<a className={styles.anchor} href="https://www.iconfont.cn/" target="_blank" rel="noreferrer">iconfont.cn</a>
 				</div>
@@ -225,7 +223,7 @@ export function StyleGuide() {
 						<div>
 							<div className={styles.h3}>Colors</div>
 							<div className={styles.demoRow} style={{ marginTop: 8 }}>
-								{["--primary","--accent","--secondary","--success","--warning","--error"].map(v => (
+								{["--primary", "--accent", "--secondary", "--success", "--warning", "--error"].map(v => (
 									<div key={v} className={styles.swatch} style={{ width: 80 }}>
 										<div className={styles.swatchColor} style={{ background: `var(${v})` }} />
 										<div className={styles.swatchMeta}>{v}</div>
@@ -247,8 +245,8 @@ export function StyleGuide() {
 						<div>
 							<div className={styles.h3}>Icons</div>
 							<div className={styles.demoRow} style={{ marginTop: 8 }}>
-								<svg width="20" height="20" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="#4A5565" strokeWidth="2" fill="none"/></svg>
-								<svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v4h1m-1-12a10 10 0 100 20 10 10 0 000-20z" stroke="#4A5565" strokeWidth="2" fill="none"/></svg>
+								<svg width="20" height="20" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M12 22a10 10 0 100-20 10 10 0 000 20z" stroke="#4A5565" strokeWidth="2" fill="none" /></svg>
+								<svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 8h.01M11 12h1v4h1m-1-12a10 10 0 100 20 10 10 0 000-20z" stroke="#4A5565" strokeWidth="2" fill="none" /></svg>
 							</div>
 						</div>
 					</div>
@@ -259,4 +257,4 @@ export function StyleGuide() {
 }
 
 export default StyleGuide;
- 
+
