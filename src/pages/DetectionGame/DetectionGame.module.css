@@ -5,6 +5,7 @@
   font-family: "Arimo", sans-serif;
   animation: pageSlideInFromRight 320ms ease both;
   transition: 0.3s;
+  font-family: "Arimo", sans-serif;
 }
 
 @keyframes pageSlideInFromRight {
