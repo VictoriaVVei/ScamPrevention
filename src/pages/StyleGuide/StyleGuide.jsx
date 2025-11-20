@@ -1240,7 +1240,7 @@ export function StyleGuide() {
         </section>
 
         {/* 15. Components */}
-        <section id="components" className={styles.section}>
+        <section id="Components" className={styles.section}>
           <div className={styles.container}>
             <h2 className={styles.h2}>15. Other Components</h2>
             <div
@@ -1347,66 +1347,79 @@ export function StyleGuide() {
                   </div>
                 </div>
               </div>
-              
-              				{/* Tags */}
-					<div style={{ marginTop: 12 }}>
-						<div className={styles.caption} style={{ marginBottom: 8 }}>Tags</div>
-						<div className={styles.demoRow}>
-							<span 
-								className={`${styles.sgTag} ${selectedTag === 'Tag' ? styles.sgTagSelected : ''}`}
-								onClick={() => setSelectedTag(selectedTag === 'Tag' ? null : 'Tag')}
-								style={{ cursor: 'pointer' }}
-							>Tag</span>
-							<span 
-								className={`${styles.sgTag} ${selectedTag === 'Bank' ? styles.sgTagSelected : ''}`}
-								onClick={() => setSelectedTag(selectedTag === 'Bank' ? null : 'Bank')}
-								style={{ cursor: 'pointer' }}
-							>Bank</span>
-							<span 
-								className={`${styles.sgTag} ${selectedTag === 'Scam' ? styles.sgTagSelected : ''}`}
-								onClick={() => setSelectedTag(selectedTag === 'Scam' ? null : 'Scam')}
-								style={{ cursor: 'pointer' }}
-							>Scam</span>
-						</div>
-					</div>
 
-					{/* Search Input */}
-					<div style={{ marginTop: 24 }}>
-						<div className={styles.caption} style={{ marginBottom: 8 }}>Search Input</div>
-						<div className={styles.searchInputWrapper}>
-							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}>
-								<path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="#555555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-							</svg>
-							<input 
-								type="text" 
-								className={styles.searchInput} 
-								placeholder="Search"
+              {/* Search Input */}
+              <div style={{ marginTop: 24 }}>
+                <div className={styles.caption} style={{ marginBottom: 8 }}>
+                  Search Input
+                </div>
+                <div className={styles.searchInputWrapper}>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                      position: "absolute",
+                      left: "16px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      pointerEvents: "none",
+                    }}
+                  >
+                    <path
+                      d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                      stroke="#555555"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <input
+                    type="text"
+                    className={styles.searchInput}
+                    placeholder="Search"
+                  />
+                </div>
+              </div>
 
-							/>
-						</div>
-					</div>
+              {/* Button Divider */}
+              <div style={{ marginTop: 24 }}>
+                <div className={styles.caption} style={{ marginBottom: 8 }}>
+                  List End State
+                </div>
+                <div className={styles.hitButtonDivider}>
+                  <span className={styles.hitButtonLine}></span>
+                  <span className={styles.hitButtonText}>
+                    You Hit The Button
+                  </span>
+                  <span className={styles.hitButtonLine}></span>
+                </div>
+              </div>
 
-					{/* Button Divider */}
-					<div style={{ marginTop: 24 }}>
-						<div className={styles.caption} style={{ marginBottom: 8 }}>List End State</div>
-						<div className={styles.hitButtonDivider}>
-							<span className={styles.hitButtonLine}></span>
-							<span className={styles.hitButtonText}>You Hit The Button</span>
-							<span className={styles.hitButtonLine}></span>
-						</div>
-					</div>
-
-					{/* Date Display */}
-					<div style={{ marginTop: 24 }}>
-						<div className={styles.caption} style={{ marginBottom: 8 }}>Timestamp Display</div>
-						<div className={styles.demoRow} style={{ flexDirection: 'column', alignItems: 'flex-start', gap: 8 }}>
-							<div className={styles.dateDisplayLong}>December 31, 2025</div>
-							<div className={styles.dateDisplayRelative}>Today</div>
-							<div className={styles.dateDisplayRelative}>Yesterday</div>
-							<div className={styles.dateDisplayRelative}>1 hour ago</div>
-							<div className={styles.dateDisplayRelative}>1 min ago</div>
-						</div>
-					</div>
+              {/* Date Display */}
+              <div style={{ marginTop: 24 }}>
+                <div className={styles.caption} style={{ marginBottom: 8 }}>
+                  Timestamp Display
+                </div>
+                <div
+                  className={styles.demoRow}
+                  style={{
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: 8,
+                  }}
+                >
+                  <div className={styles.dateDisplayLong}>
+                    December 31, 2025
+                  </div>
+                  <div className={styles.dateDisplayRelative}>Today</div>
+                  <div className={styles.dateDisplayRelative}>Yesterday</div>
+                  <div className={styles.dateDisplayRelative}>1 hour ago</div>
+                  <div className={styles.dateDisplayRelative}>1 min ago</div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
