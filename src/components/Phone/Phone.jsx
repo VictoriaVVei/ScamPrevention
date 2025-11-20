@@ -1387,8 +1387,16 @@ export function Phone({
 
       {/* long press popup */}
       {isDialogOpen && selectedMessage && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
+        <div
+          className={styles.modalOverlay}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              // Clicked outside the modal content
+              handleCancelSave();
+            }
+          }}
+        >
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalTitle}>Mark as Scam?</div>
             <div className={styles.modalSummary}>
               <strong>{selectedMessage.title}</strong>
@@ -1444,8 +1452,15 @@ export function Phone({
 
       {/* remove confirmation popup */}
       {removeConfirmOpen && itemToRemove && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modal}>
+        <div
+          className={styles.modalOverlay}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              handleCancelRemove();
+            }
+          }}
+        >
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalTitle}>Delete flagged item?</div>
             <div className={styles.modalSummary}>
               <strong>
