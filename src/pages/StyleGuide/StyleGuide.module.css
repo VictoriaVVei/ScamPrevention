@@ -3,8 +3,9 @@
 :root {
   /* Brand colors */
   --primary: #18a193; /* Teal used across app */
-  --secondary: #155dfc; /* Accent blue used in footer */
-  --accent: #009689; /* Header stroke teal */
+	--secondary: #009689; /* Header stroke teal */
+	--accent: #155dfc; /* Accent blue used in footer */
+	--tag-selected: #00786F; /* Dark teal used in tags */
 
   /* Semantic colors */
   --success: #00a63e;
@@ -585,6 +586,7 @@
   --primary: #18a193; /* Brand teal used across CTAs */
   --secondary: #009689; /* Teal variant used in bottom nav */
   --accent: #155dfc; /* Accent blue used in info cards */
+  --tag-selected: #00786F; /* Dark teal used in tags */
 
   /* Semantic */
   --success: #00a63e;
@@ -1214,6 +1216,8 @@
   background: #fef2f2;
 }
 
+
+
 /* Tag (match ScamGuidePage) */
 .sgTag {
   border: none;
@@ -1223,6 +1227,70 @@
   padding: 0.3rem 0.5rem;
   font-size: 0.8rem;
   display: inline-flex;
+}
+
+.sgTagSelected { 
+  background: var(--tag-selected); color: #ffffff; 
+}
+
+
+/* Search Input */
+.searchInputWrapper { 
+  position: relative; width: 100%; 
+  max-width: 400px; }
+.searchInput { 
+	width: 100%; 
+	padding: 12px 20px 12px 44px; 
+	border: none; 
+	border-radius: 999px; 
+	background: var(--gray-200); 
+	font-size: 16px; 
+	font-family: var(--font-sans);
+	color: var(--gray-900);
+	transition: all 0.2s ease;
+}
+.searchInput:focus { 
+	outline: none; 
+	background: var(--white);
+	box-shadow: 0 0 0 2px var(--primary); 
+}
+.searchInput::placeholder { 
+  color: var(--gray-600); 
+}
+
+/* Hit Button Divider */
+.hitButtonDivider {
+  display:         flex;
+  align-items:     center;
+  gap:             12px;
+  width:           100%;
+  max-width:       320px;
+  margin:          0 auto;
+}
+.hitButtonLine {
+  flex:            1;
+  height:          1px;
+  background:      var(--primary);
+}
+.hitButtonText {
+  font-size:       12px;
+  color:           var(--gray-600);
+  white-space:     nowrap;
+}
+
+/* Date Display */
+.dateDisplay {
+  font-size:       0.875rem;
+  color:           var(--gray-700);
+  font-family:     monospace;
+}
+.dateDisplayLong {
+  font-size:       0.875rem;
+  color:           var(--gray-700);
+}
+.dateDisplayRelative {
+  font-size:       0.85rem;
+  color:           var(--gray-600);
 }
 
 /* Demo helpers */
@@ -1239,3 +1307,6 @@
   border-radius: 8px;
   overflow: auto;
 }
+
+
+
