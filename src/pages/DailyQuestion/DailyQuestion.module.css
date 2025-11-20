@@ -1,197 +1,196 @@
-/* Root page layout */
 #DailyQuestion {
-    width: 100%;
-    min-height: 100vh;
-    background: #f4f7f8;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
-    display: flex;
-    flex-direction: column;
-    animation: pageSlideInFromLeft 320ms ease both;
-    font-family: "Arimo", sans-serif;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-normal);
+  font-family: var(--font-normal);
+
+  animation: pageSlideInFromLeft 320ms ease both;
 }
 
 @keyframes pageSlideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-
 .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--gap-outter);
+
+  padding: var(--padding-page);
+  height: 100%;
+  overflow-y: auto;
 }
 
 /* Main quiz card */
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem;
-    gap: 1rem;
-    border: 0.052rem solid #e5e7eb;
-    box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
-        0 0.0625rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.1);
-    border-radius: 1.5rem;
-    background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--padding-cards);
+  gap: var(--gap-outter);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
+    0 0.0625rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-large);
+  background: var(--white);
 }
 
 @keyframes shake {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    25% {
-        transform: translateX(-4px);
-    }
+  25% {
+    transform: translateX(-4px);
+  }
 
-    50% {
-        transform: translateX(4px);
-    }
+  50% {
+    transform: translateX(4px);
+  }
 
-    75% {
-        transform: translateX(-2px);
-    }
+  75% {
+    transform: translateX(-2px);
+  }
 
-    100% {
-        transform: translateX(0);
-    }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .cardShake {
-    animation: shake 0.25s ease;
+  animation: shake 0.25s ease;
 }
 
 .cardHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .sectionTitle {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #18a193;
+  font-size: var(--subTitle-small);
+  font-weight: 600;
+  color: var(--primary);
 }
 
 .progressText {
-    font-size: 0.85rem;
-    color: #94a3b8;
+  font-size: var(--body-normal-t);
+  color: var(--neutral-muted);
 }
 
 .questionBox {
-    display: flex;
+  display: flex;
 }
 
 .questionText {
-    font-size: 1rem;
-    color: #555;
-    margin: 0;
+  font-size: var(--body-normal-t);
+  color: var(--body-normal-c);
+  margin: 0;
 }
 
 .optionsList {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-inner);
+  width: 100%;
 }
 
 .option {
-    border: 1px solid #e2e8f0;
-    background: #ffffff;
-    border-radius: 1rem;
-    padding: 0.75rem 0.9rem;
+  border: 1px solid #e2e8f0;
+  background: var(--white);
+  border-radius: var(--radius-normal);
+  padding: 0.75rem 0.9rem;
 
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-    transition: border-color 0.15s ease,
-        background-color 0.15s ease,
-        box-shadow 0.15s ease;
-    color: #555;
-    width: 100%;
+  transition: border-color 0.15s ease, background-color 0.15s ease,
+    box-shadow 0.15s ease;
+  color: var(--body-normal-c);
+  width: 100%;
 }
 
 .optionCircle {
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 999px;
-    border: 2px solid #cbd5e1;
-    box-sizing: border-box;
-    margin-right: 5px;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 999px;
+  border: 2px solid #cbd5e1;
+  box-sizing: border-box;
+  margin-right: 5px;
 }
 
 .optionText {
-    text-align: left;
-    font-size: 1rem;
+  text-align: left;
+  font-size: var(--body-normal-t);
 }
 
 .optionSelected {
-    border-color: #169a4d;
+  border-color: #169a4d; /* keep explicit green border */
 }
 
 .optionCorrect {
-    border-color: #169a4d;
-    background: #F0FDF4;
+  border-color: #169a4d;
+  background: var(--btn-right);
 }
 
 .optionWrong {
-    border-color: #d13b3b;
-    background: #FEF2F2;
+  border-color: #d13b3b;
+  background: var(--btn-wrong);
 }
 
 .submitButton:disabled {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 /* Slide-up fade-in animation for the result banner */
 @keyframes resultSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Container for result feedback */
 .resultBanner {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 0.9rem;
-    padding: 0.7rem 0.9rem;
-    font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.9rem;
 
-    animation: resultSlideUp 0.25s ease-out forwards;
+  animation: resultSlideUp 0.25s ease-out forwards;
 }
 
 .resultIcon {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .resultCorrect {
-    background: #e8f9ee;
-    color: #15803d;
+  background: var(--success-alt-bg); /* lighter variant token */
+  color: #15803d; /* keep specific shade */
+  font-size: var(--body-normal-t);
 }
 
 .resultIncorrect {
-    background: #ffecec;
-    color: #b91c1c;
+  background: var(--error-alt-bg); /* lighter variant token */
+  color: var(--wrong);
+  font-size: var(--body-normal-t);
 }

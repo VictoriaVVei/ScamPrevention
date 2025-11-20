@@ -1,209 +1,218 @@
 #PhoneGame {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    font-family: "Arimo", sans-serif;
-    animation: pageSlideInFromLeft 320ms ease both;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-normal);
+  font-family: var(--font-normal);
+
+  animation: pageSlideInFromLeft 320ms ease both;
 }
 
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
-    flex: 1;
-    overflow-y: auto;
-
-    background-color: #f8fafc;
+  background-color: var(--bg-normal);
+  overflow-y: auto;
 }
 
 .toolBtn {
-    position: absolute;
-    top: 2.5rem;
-    right: 1.875rem;
-    transform: translate(50%, -50%);
+  position: absolute;
+  top: 2.5rem;
+  right: 1.875rem;
+  transform: translate(50%, -50%);
 
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 @keyframes pageSlideInFromLeft {
-    from { transform: translateX(-100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* 覆盖层 */
 @keyframes showUp {
-    from {
-        opacity: 0;
-        pointer-events: none;
-    }
+  from {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-    to {
-        opacity: 1;
-        pointer-events: auto;
-    }
+  to {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .toolMenuOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 60;
-    animation: showUp 0.3s ease forwards;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  animation: showUp 0.3s ease forwards;
 }
 
 .toolMenu {
-    width: min(32.5rem, 92vw);
-    background: #fff;
-    border-radius: 1rem;
-    border: 0.0625rem solid #e5e7eb;
-    box-shadow: 0 0.5rem 1.75rem rgba(2, 8, 20, 0.12);
-    padding: 1rem;
+  width: min(32.5rem, 92vw);
+  background: var(--white);
+  border-radius: var(--radius-normal);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
+    0 0.0625rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.1);
+  padding: var(--padding-page);
 
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-inner);
 }
 
 .toolItem {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border-radius: 1rem;
-    cursor: pointer;
-}   
+  display: flex;
+  align-items: center;
+  gap: var(--gap-outter);
+  padding: var(--padding-page);
+  border-radius: var(--radius-normal);
+  cursor: pointer;
+}
 
 .toolItem:nth-child(1) {
-    background-color: #EFF6FF;
-    border: 1px solid #d5e5ff;
+  background-color: var(--btn-info);
+  border: 1px solid var(--info-tint);
 }
 
 .toolItem:nth-child(2) {
-    background-color: #F0FDF4;
-    border: 0.0625rem solid #B9F8CF;
+  background-color: var(--btn-right);
+  border: 0.0625rem solid var(--right-border-tint);
 }
 
 .toolItem:nth-child(3) {
-    background-color: #FFF7ED;
-    border: 0.0625rem solid #FEE685;
+  background-color: var(--btn-report);
+  border: 0.0625rem solid var(--report-border-tint);
 }
 
 .toolIcon {
-    width: 1.75rem;
-    height: 1.75rem;
-    display: grid;
-    place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-items: center;
 }
 
 .toolText {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .toolTitle {
-    font-weight: 600;
-    color: #111827;
+  font-weight: 600;
+  color: #111827;
 }
 
 .toolDesc {
-    color: #4a5565;
-    font-size: 0.875rem;
+  color: var(--body-normal-c);
+  font-size: var(--subTitle-small);
 }
 
 .toolCloseBtn {
-    margin-top: 0.375rem;
-    width: 100%;
-    background: #111827;
-    color: #fff;
-    border: none;
-    border-radius: 1rem;
-    padding: 1rem;
-    cursor: pointer;
+  margin-top: 0.375rem;
+  width: 100%;
+  background: #111827; /* dark utility color kept */
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-normal);
+  padding: var(--padding-page);
+  cursor: pointer;
 }
 
 .toolCloseBtn:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* Success GIF below main */
 .successGifWrap {
-    position: absolute;
-    bottom: 5rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0 1.5rem;
-    background-color: transparent;
+  position: absolute;
+  bottom: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--padding-page) 0 var(--padding-cards);
+  background-color: transparent;
 }
 
 .successGif {
-    width: 10rem;
-    height: auto;
-    image-rendering: -webkit-optimize-contrast;
-    background-color: transparent;
+  width: 10rem;
+  height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  background-color: transparent;
 }
 
 /* Modal styles to match Phone modal */
 .modalOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 70;
-    animation: showUp 0.3s ease forwards;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 70;
+  animation: showUp 0.3s ease forwards;
 }
 
 .modal {
-    width: 80%;
-    max-width: 20rem;
-    background: #ffffff;
-    color: #111;
-    border-radius: 1rem;
-    padding: 1.125rem 1.25rem 0.875rem;
-    box-shadow: 0 1.125rem 2.5rem rgba(0, 0, 0, 0.35);
+  width: 80%;
+  max-width: 20rem;
+  background: var(--white);
+  color: #111;
+  border-radius: var(--radius-normal);
+  padding: 1.125rem 1.25rem 0.875rem; /* custom composite spacing retained */
+  box-shadow: 0 1.125rem 2.5rem var(--black-100);
 }
 
 .modalTitle {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  font-size: var(--subTitle-normal);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .modalText {
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
+  font-size: var(--subTitle-small);
+  margin-bottom: var(--gap-outter);
 }
 
 .modalButtons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gap-inner);
 }
 
 .modalBtn {
-    border-radius: 1rem;
-    border: none;
-    padding: 0.375rem 0.875rem;
-    font-size: 0.875rem;
-    cursor: pointer;
+  border-radius: var(--radius-normal);
+  border: none;
+  padding: 0.375rem 0.875rem; /* fine-grain button padding retained */
+  font-size: var(--subTitle-small);
+  cursor: pointer;
 }
 
 .modalCancel {
-    background: #FEF2F2;
-    border: 0.0625rem solid #FFC9C9;
-    color: #111;
+  background: var(--btn-wrong);
+  border: 0.0625rem solid #ffc9c9;
+  color: #111;
 }
 
 .modalConfirm {
-    background: #F0FDF4;
-    border: 0.0625rem solid #B9F8CF;
-    color: #111;
+  background: var(--btn-right);
+  border: 0.0625rem solid #b9f8cf;
+  color: #111;
 }
