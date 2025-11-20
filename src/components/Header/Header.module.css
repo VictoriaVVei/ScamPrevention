@@ -2,16 +2,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
-  background: #ffffff;
+  padding: var(--padding-page);
+  background: var(--white);
   height: 4.5rem;
 }
 
 .backBtn {
   border: none;
   background: transparent;
-  font-size: 0.875rem;
-  color: #18a193;
+  font-size: var(--subTitle-small);
+  color: var(--primary);
   cursor: pointer;
   text-align: left;
   margin-bottom: 0.5rem;
@@ -24,10 +24,10 @@
 }
 
 .logoIcon {
-  font-size: 1.125rem;
+  font-size: var(--subTitle-normal);
 }
 
 .logoText {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--subTitle-small);
 }

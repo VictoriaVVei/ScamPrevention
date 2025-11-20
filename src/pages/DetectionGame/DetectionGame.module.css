@@ -1,11 +1,13 @@
-.DetectionGame {
+#DetectionGame {
   display: flex;
   flex-direction: column;
+
+  width: 100%;
   height: 100vh;
-  font-family: "Arimo", sans-serif;
+  background: var(--bg-normal);
+  font-family: var(--font-normal);
+
   animation: pageSlideInFromRight 320ms ease both;
-  transition: 0.3s;
-  font-family: "Arimo", sans-serif;
 }
 
 @keyframes pageSlideInFromRight {
@@ -23,37 +25,35 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
   flex: 1;
-  overflow-y: auto;
+  gap: var(--gap-outter);
 
-  background-color: #f8fafc;
+  padding: var(--padding-page);
+  height: 100%;
 }
 
 .title {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--title);
   font-weight: 700;
-  margin: 0.25rem;
-  color: #18a193;
+  color: var(--primary);
 }
 
 .timer {
   margin: 0 auto;
-  border: 0.104rem solid #46ecd5;
-  border-radius: 1rem;
+  border: 0.104rem solid #46ecd5; /* accent border retained */
+  border-radius: var(--radius-normal);
   padding: 0.25rem 0.75rem;
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  font-size: 0.8125rem;
-  background: #f0fdfa;
-  color: #009689;
+  font-size: var(--body-normal-t);
+  background: var(--btn-right);
+  color: var(--primary);
 }
 
 .bell {
-  font-size: 0.875rem;
+  font-size: var(--body-normal-t);
 }
 
 .timeText {
@@ -64,21 +64,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1.5rem;
-  gap: 1rem;
-  border: 0.052rem solid #e5e7eb;
+  padding: var(--padding-cards);
+  gap: var(--gap-outter);
   box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
     0 0.0625rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.1);
-  border-radius: 1.5rem;
-  background: #ffffff;
+  border-radius: var(--radius-large);
+  background: var(--white);
 }
 
-.DetectionGame h2 {
+#DetectionGame h2 {
   margin: 0;
 }
 
 .cardTitle {
-  font-size: 1rem;
+  font-size: var(--subTitle-small);
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
@@ -89,7 +88,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--gap-inner);
 }
 
 .steps li {
@@ -97,25 +96,25 @@
   align-items: flex-start;
   gap: 0.75rem;
   margin-bottom: 0.625rem;
-  font-size: 0.8125rem;
+  font-size: var(--body-normal-t);
   line-height: 1.4;
 }
 
 .steps li p {
-  color: #4a5565;
-  font-size: 0.875rem;
+  color: var(--body-normal-c);
+  font-size: var(--body-normal-t);
 }
 
 .stepCircle {
   width: 1.375rem;
   height: 1.375rem;
   border-radius: 50%;
-  background: #cbfbf1;
-  color: #18a193;
+  background: var(--li-bg); /* info tint via token */
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: var(--body-normal-t);
   flex-shrink: 0;
 }
 
@@ -124,22 +123,23 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.3125rem;
-  padding: 1rem;
-  font-size: 0.875rem;
-  background: #fffbeb;
+  padding: var(--padding-page);
+  background: var(--btn-report);
   border: 0.052rem solid #fee685;
-  border-radius: 1rem;
+  border-radius: var(--radius-normal);
 }
 
 p.rememberTitle {
   font-weight: 700;
-  color: #973c00;
+  color: var(--warning);
+  font-size: var(--subTitle-small);
 }
 
 p.rememberText {
-  color: #973c00;
+  color: var(--warning);
+  font-size: var(--body-normal-t);
 }
 
-.DetectionGame p {
+#DetectionGame p {
   margin: 0;
 }

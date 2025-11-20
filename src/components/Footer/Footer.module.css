@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1rem 0;
-  background: #ffffff;
+  padding: var(--padding-page) 0;
+  background: var(--white);
   height: 5.25rem;
 }
 
@@ -12,29 +12,16 @@
   flex-direction: column;
   align-items: center;
   gap: 0.3125rem;
-  font-size: 0.6875rem;
-  color: #555;
+  font-size: 0.75rem;
+  color: var(--body-normal-c);
   width: 4.99rem;
 }
 
 .navItem:nth-child(2) {
-  color: #009689;
-
-  background: #f0fdfa;
-  border-radius: 1rem;
+  color: var(--primary);
+  background: var(--btn-right); /* standardized */
+  border-radius: var(--radius-normal);
   padding: 0.625rem 1.5625rem;
-}
-
-.icon {
-  font-size: 1.125rem;
-  margin-bottom: 0.25rem;
-  width: 1.25rem;
-  height: 1.25rem;
-  overflow: hidden;
-}
-
-.label {
-  font-size: 0.75rem;
 }
 
 /* AddMenu container */
@@ -61,7 +48,7 @@
   z-index: 999;
   animation: showUp 0.3s ease forwards;
   transition: 0.3s;
-  background-color: rgb(0, 0, 0, 0.15);
+  background-color: rgb(0, 0, 0, 0.25);
 }
 
 .addMenu {
@@ -73,39 +60,38 @@
   width: 90%;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  gap: 0.625rem;
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 1.25rem 1.5625rem -0.3125rem rgba(0, 0, 0, 0.1),
-    0 0.5rem 0.625rem -0.375rem rgba(0, 0, 0, 0.1);
-  border: 0.0455rem solid #e5e7eb;
+  padding: var(--padding-page);
+  gap: var(--gap-inner);
+  background-color: var(--white);
+  border-radius: var(--radius-normal);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
+    0 0.0625rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.1);
 }
 
 .item {
-  padding: 1rem;
-  border-radius: 1rem;
-  font-size: 1rem;
+  padding: var(--padding-page);
+  border-radius: var(--radius-normal);
+  font-size: var(--subTitle-small);
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: var(--gap-inner);
   cursor: pointer;
 }
 
 .blue {
-  background: #eff6ff;
-  color: #155dfc;
-  border: 1px solid #d5e5ff;
+  background: var(--btn-info);
+  color: var(--info);
+  border: 1px solid #d5e5ff; /* no token yet */
 }
 
 .orange {
-  background: #fff7ed;
-  color: #f54900;
-  border: 0.0625rem solid #FEE685;
+  background: var(--btn-report);
+  color: var(--report);
+  border: 0.0625rem solid #fee685; /* keep raw border */
 }
 
 .green {
-  background: #f0fdf4;
-  color: #00a63e;
-  border: 0.0625rem solid #B9F8CF;
+  background: var(--btn-right);
+  color: var(--right);
+  border: 0.0625rem solid #b9f8cf; /* keep raw border */
 }
