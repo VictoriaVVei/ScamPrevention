@@ -709,7 +709,7 @@ export function StyleGuide() {
   flex-direction: column;
 
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background: var(--bg-normal);
   font-family: "Arimo", sans-serif;
 }
@@ -751,7 +751,7 @@ export function StyleGuide() {
   flex-direction: column;
 
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background: var(--bg-normal);
   font-family: "Arimo", sans-serif;
 }

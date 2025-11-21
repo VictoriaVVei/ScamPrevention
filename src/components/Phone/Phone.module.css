@@ -3,6 +3,7 @@
   width: 100%;
   height: 100%;
   font-family: var(--font-normal);
+  user-select: none;
 }
 
 .phoneInner {
@@ -156,7 +157,7 @@
 /* === Dock === */
 .dock {
   position: absolute;
-  bottom: 5rem;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
 
