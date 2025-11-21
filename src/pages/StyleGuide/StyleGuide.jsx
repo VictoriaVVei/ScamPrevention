@@ -4,6 +4,8 @@ import { Header } from "../../components/Header/Header.jsx";
 import { Footer } from "../../components/Footer/Footer.jsx";
 import { HomeIcon } from "../../components/Phone/Phone.jsx";
 import { MessageRow } from "../../components/Phone/Phone.jsx";
+import CircularProgress from '@mui/joy/CircularProgress';
+import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 
 export function StyleGuide() {
   const [showDialog, setShowDialog] = useState(false);
@@ -142,6 +144,35 @@ export function StyleGuide() {
     });
     setColorValues(resolved);
   }, []);
+
+  // Forms: simplified constants only (no submit / validation per request)
+  const SCAM_TYPES = [
+    "New Scam",
+    "Web Scam",
+    "Phone Scam",
+  ];
+
+  // Joy UI theme extension: ensure success palette 500 matches desired #00a63e
+  const joyTheme = extendTheme({
+    colorSchemes: {
+      light: {
+        palette: {
+          success: {
+            50: '#e6f9ef',
+            100: '#c2f0d8',
+            200: '#99e6bf',
+            300: '#66d89f',
+            400: '#33c879',
+            500: '#00a63e', // primary success tone
+            600: '#008d34',
+            700: '#006b27',
+            800: '#004a1b',
+            900: '#00290e'
+          }
+        }
+      }
+    }
+  });
 
   return (
     <div id={styles.StyleGuide}>
@@ -1079,7 +1110,41 @@ export function StyleGuide() {
         <section id="Forms" className={styles.section}>
           <div className={styles.container}>
             <h2 className={styles.h2}>8. Forms</h2>
-            <p className={styles.caption}>Matches PhoneGame form format.</p>
+            <p className={styles.caption}>Simplified form fields only (no actions).</p>
+            {/* Simplified static form (uncontrolled) */}
+            <form className={styles.formDemo}>
+              <div className={styles.formGroup}>
+                <label htmlFor="sg-type" className={styles.label}>Scam Type</label>
+                <select id="sg-type" name="type" className={styles.sgSelect} defaultValue="New Scam">
+                  {SCAM_TYPES.map((t) => <option key={t}>{t}</option>)}
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="sg-contact" className={styles.label}>Contact / Account / URL</label>
+                <input id="sg-contact" name="contact" type="text" className={styles.sgInput} placeholder="e.g. +1 555 123 / wechat id / website.com" />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="sg-description" className={styles.label}>Description</label>
+                <textarea id="sg-description" name="description" rows={4} className={styles.sgTextarea} placeholder="Briefly describe what the scammer said or requested." />
+              </div>
+            </form>
+            {/* Component cards without gray code blocks */}
+            <div className={styles.formComponentsGrid}>
+              <div className={styles.formComponentCard}>
+                <h4>Input Field</h4>
+                <input className={styles.sgInput} placeholder="Input" />
+              </div>
+              <div className={styles.formComponentCard}>
+                <h4>Select Field</h4>
+                <select className={styles.sgSelect} defaultValue="New Scam">
+                  {SCAM_TYPES.map((t) => <option key={t}>{t}</option>)}
+                </select>
+              </div>
+              <div className={styles.formComponentCard}>
+                <h4>Textarea</h4>
+                <textarea className={styles.sgTextarea} rows={3} placeholder="Multiline" />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1418,6 +1483,29 @@ export function StyleGuide() {
                   <div className={styles.dateDisplayRelative}>Yesterday</div>
                   <div className={styles.dateDisplayRelative}>1 hour ago</div>
                   <div className={styles.dateDisplayRelative}>1 min ago</div>
+                </div>
+              </div>
+
+              {/* Joy UI Circular Progress (standard Joy UI API with theme) */}
+              <div style={{ marginTop: 32 }}>
+                <div className={styles.caption} style={{ marginBottom: 8 }}>
+                  Joy UI Circular Progress
+                </div>
+                <CssVarsProvider theme={joyTheme}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+                    <CircularProgress size="sm" color="success" variant="soft" />
+                    <CircularProgress size="md" color="success" variant="plain" />
+                    <CircularProgress size="lg" color="success" variant="solid" />
+                  </div>
+                </CssVarsProvider>
+                <div style={{ marginTop: '0.75rem', fontSize: '0.75rem', lineHeight: 1.5 }}>
+                  <strong>Install:</strong>
+                  <pre style={{ background: '#0f172a', color: '#e2e8f0', padding: '0.75rem 1rem', borderRadius: '0.5rem', fontSize: '0.75rem', overflow: 'auto' }}>npm install @mui/joy @emotion/react @emotion/styled</pre>
+                  <a className={styles.anchor} href="https://mui.com/joy-ui/getting-started/installation/" target="_blank" rel="noreferrer">Joy UI Installation Guide</a>
+                  <div style={{ marginTop: '0.5rem' }}>
+                    <code style={{ background: '#0f172a', color: '#99e6bf', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.65rem' }}>{'<CircularProgress size="md" color="success" variant="soft" />'}</code>
+                    <span style={{ marginLeft: '0.5rem' }}>Theme success[500] = #00a63e</span>
+                  </div>
                 </div>
               </div>
             </div>
