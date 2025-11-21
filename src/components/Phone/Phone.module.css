@@ -350,6 +350,7 @@
   background-size: cover;
   background-position: center;
   border: none;
+  -webkit-touch-callout: none;
 }
 
 /* === Bank Screen === */
