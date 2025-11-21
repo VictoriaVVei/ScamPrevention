@@ -649,9 +649,69 @@
   color:           var(--gray-700);
 }
 
-.dateDisplayRelative {
+dateDisplayRelative {
   font-size:       0.85rem;
   color:           var(--gray-600);
+}
+
+/* ===== Forms (Style Guide only) ===== */
+/* Container for the full demo form */
+.formDemo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  max-width: 520px;
+}
+
+/* Group wrapper for consistent vertical spacing */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Shared input styles (do not override existing global tokens) */
+.sgInput,
+.sgSelect,
+.sgTextarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--black-200, #ccc);
+  font-size: 0.9375rem;
+  background: #fff;
+  font-family: inherit;
+}
+.sgInput:focus,
+.sgSelect:focus,
+.sgTextarea:focus {
+  outline: 2px solid var(--info-tint);
+  outline-offset: 1px;
+}
+.sgTextarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Error text */
+/* Component showcase grid under form */
+.formComponentsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.formComponentCard {
+  border: 1px solid var(--black-200);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.formComponentCard h4 {
+  margin: 0;
+  font-size: var(--subTitle-small);
 }
 
 
