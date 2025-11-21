@@ -4,6 +4,7 @@ import { Header } from "../../components/Header/Header.jsx";
 import { Footer } from "../../components/Footer/Footer.jsx";
 import { HomeIcon } from "../../components/Phone/Phone.jsx";
 import { MessageRow } from "../../components/Phone/Phone.jsx";
+import { Modal } from "../../components/Modal/Modal.jsx";
 
 export function StyleGuide() {
   const [showDialog, setShowDialog] = useState(false);
@@ -1041,36 +1042,16 @@ export function StyleGuide() {
               Open Demo Modal
             </button>
             {showDialog && (
-              <div
-                className={styles.modalOverlay}
-                onClick={() => setShowDialog(false)}
-              >
-                <div
-                  className={styles.modal}
-                  onClick={(e) => e.stopPropagation()}
-                  role="dialog"
-                  aria-modal="true"
-                >
-                  <div className={styles.modalTitle}>Confirm Action?</div>
-                  <div className={styles.modalText}>
-                    This matches the Phone modal style used in the app.
-                  </div>
-                  <div className={styles.modalButtons}>
-                    <button
-                      className={`${styles.modalBtn} ${styles.modalCancel}`}
-                      onClick={() => setShowDialog(false)}
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      className={`${styles.modalBtn} ${styles.modalConfirm}`}
-                      onClick={() => setShowDialog(false)}
-                    >
-                      Confirm
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <Modal
+                isOpen={true}
+                onClose={() => setShowDialog(false)}
+                title="Confirm Action?"
+                summary="This matches the Phone modal style used in the app."
+                cancelText="Cancel"
+                onCancel={() => setShowDialog(false)}
+                confirmText="Confirm"
+                onConfirm={() => setShowDialog(false)}
+              />
             )}
           </div>
         </section>
@@ -1242,7 +1223,7 @@ export function StyleGuide() {
         {/* 15. Components */}
         <section id="Components" className={styles.section}>
           <div className={styles.container}>
-            <h2 className={styles.h2}>15. Other Components</h2>
+            <h2 className={styles.h2}>15. Other Common Components</h2>
             <div
               style={{
                 display: "flex",
@@ -1260,35 +1241,7 @@ export function StyleGuide() {
               </div>
 
               <div>
-                <p className={styles.body}>2. Phone App</p>
-                <div
-                  style={{
-                    backgroundColor: "var(--primary)",
-                    width: "fit-content",
-                  }}
-                >
-                  <HomeIcon
-                    label="Mail"
-                    badge={5}
-                    type="mail"
-                    icon={<MailSvg />}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <p className={styles.body}>3. Phone message</p>
-                <MessageRow
-                  message={{
-                    icon: "✉️",
-                    title: "Canvas",
-                    text: "New Assignment Posted: Week 5 Discussion. Your instructor has posted a new assignment in SRID.",
-                  }}
-                />
-              </div>
-
-              <div>
-                <p className={styles.body}>4. Slide</p>
+                <p className={styles.body}>2. Slide</p>
                 <div className={styles.card}>
                   <h2 className={styles.h2}>Slides Pattern (Interactive)</h2>
                   <div

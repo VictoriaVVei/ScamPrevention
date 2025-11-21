@@ -82,22 +82,19 @@ export function DetectionGame() {
           <ol className={styles.steps}>
             <li>
               <span className={styles.stepCircle}>1</span>
-              <p>
-                Browse through apps on the simulated phone and identify which
-                ones are scams
-              </p>
+              <p>Browse the apps and long‑press any suspicious item to mark it as a scam.</p>
             </li>
             <li>
               <span className={styles.stepCircle}>2</span>
-              <p>Long-press any information you think is a scam</p>
+              <p>Answer incoming phone calls and choose how to handle them.</p>
             </li>
             <li>
               <span className={styles.stepCircle}>3</span>
-              <p>Check your scam collection</p>
+              <p>Use the tool menu in the top‑right corner to review Scams Found or finish.</p>
             </li>
             <li>
               <span className={styles.stepCircle}>4</span>
-              <p>Find all scams before time runs out!</p>
+              <p>Your final score and results will be shown at the end.</p>
             </li>
           </ol>
 

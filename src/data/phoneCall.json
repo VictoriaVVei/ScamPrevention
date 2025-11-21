@@ -1,0 +1,172 @@
+[
+  {
+    "id": "call-1",
+    "callerName": "Bank Security Dept",
+    "callerNumber": "+1 800-555-0912",
+    "type": "Impersonation",
+    "isScam": true,
+    "transcript": "Hello, this is the security department from your bank. We detected a suspicious $2,000 transfer on your account. To stop the transaction, please tell me your full card number and the code we are sending to your phone.",
+    "options": [
+      "Give them your card number and verification code so they can stop the transaction.",
+      "Hang up and call the official bank number on the back of your card or in the bank app.",
+      "Ask them to explain more details, then give them partial information only.",
+      "Stay on the line and wait for further instructions."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Fake bank call demanding sensitive financial details under urgent pressure.",
+    "path": "/audio/call-1.m4a"
+  },
+  {
+    "id": "call-2",
+    "callerName": "Global Express Delivery",
+    "callerNumber": "+1 323-555-7843",
+    "type": "ShoppingRefund",
+    "isScam": true,
+    "transcript": "Good afternoon, this is a delivery agent. Your package is stuck at customs due to an unpaid fee. Please provide your card details so we can release it today.",
+    "options": [
+      "Pay the customs fee immediately over the phone.",
+      "Check the delivery status through the official shopping app.",
+      "Ask them to call back later when you are ready.",
+      "Send them a photo of your card."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Fake delivery call trying to collect payment for non-existent customs fees.",
+    "path": "/audio/call-2.m4a"
+  },
+  {
+    "id": "call-3",
+    "callerName": "City Police Bureau",
+    "callerNumber": "+1 415-555-3029",
+    "type": "Impersonation",
+    "isScam": true,
+    "transcript": "This is Officer Lee from the police department. Your identity has been linked to a serious crime. Provide your passport and bank details immediately.",
+    "options": [
+      "Cooperate quickly and provide the requested details.",
+      "Hang up and verify through the official police station.",
+      "Send documents by email later.",
+      "Ask them to speak to your family instead."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Police impersonation scam using fear and authority to demand personal information.",
+    "path": "/audio/call-3.m4a"
+  },
+  {
+    "id": "call-4",
+    "callerName": "Cousin Kevin",
+    "callerNumber": "+1 213-555-6601",
+    "type": "Emotional",
+    "isScam": true,
+    "transcript": "It’s me, your cousin. I had an accident and need $300 urgently. Please don’t tell anyone, just send it quickly.",
+    "options": [
+      "Transfer the money right away.",
+      "Verify their identity through video call or family confirmation.",
+      "Keep the situation secret as requested.",
+      "Wait until the next day before deciding."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Emotional manipulation by pretending to be a relative in emergency.",
+    "path": "/audio/call-4.m4a"
+  },
+  {
+    "id": "call-5",
+    "callerName": "Prime Wealth Advisory",
+    "callerNumber": "+1 646-555-9987",
+    "type": "Investment",
+    "isScam": true,
+    "transcript": "Hello, I'm a senior financial consultant. We have a limited investment opportunity that guarantees stable high returns within two weeks. You just need to transfer funds to activate your account today.",
+    "options": [
+      "Transfer a small amount to test the investment first.",
+      "Decline the offer and never invest through unsolicited phone calls.",
+      "Ask for more profit screenshots before deciding.",
+      "Share your current savings so they can design a plan."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "High-return investment scam using urgency and false guarantees.",
+    "path": "/audio/call-5.m4a"
+  },
+  {
+    "id": "call-6",
+    "callerName": "Microsoft Support",
+    "callerNumber": "+1 888-555-4410",
+    "type": "Tech",
+    "isScam": true,
+    "transcript": "This is Microsoft technical support. Our system shows that your computer has been infected with severe malware. Please stay on the line and install our remote control tool so we can fix it immediately.",
+    "options": [
+      "Install the remote tool so they can clean your computer.",
+      "End the call and verify with the official Microsoft support website.",
+      "Let them guide you step by step through security settings.",
+      "Keep talking while searching for their name online."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Fake tech support scam attempting to gain remote access to your device.",
+    "path": "/audio/call-6.m4a"
+  },
+  {
+    "id": "call-7",
+    "callerName": "Immigration Services",
+    "callerNumber": "+1 917-555-2709",
+    "type": "Impersonation",
+    "isScam": true,
+    "transcript": "Hello, this is from the immigration department. Your visa records show a serious irregularity and your status may be revoked unless you confirm your identity and bank account immediately.",
+    "options": [
+      "Provide your personal and bank details to avoid visa issues.",
+      "Hang up and contact the immigration office using official channels.",
+      "Ask them to send proof via text message.",
+      "Continue listening to hear more warnings."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Immigration impersonation scam using legal threat to pressure victims.",
+    "path": "/audio/call-7.m4a"
+  },
+  {
+    "id": "call-8",
+    "callerName": "Elite Trading Mentor",
+    "callerNumber": "+1 702-555-5033",
+    "type": "Investment",
+    "isScam": true,
+    "transcript": "Hi, this is your assigned investment mentor from our trading platform. Your account has been approved for a special high-yield program. Transfer funds now to activate your position.",
+    "options": [
+      "Transfer money immediately to activate the investment.",
+      "Decline and never invest through unsolicited cold calls.",
+      "Ask for more profit history before acting.",
+      "Share your financial goals with the caller."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "High-yield investment scam pressuring for immediate fund transfer.",
+    "path": "/audio/call-8.m4a"
+  },
+  {
+    "id": "call-9",
+    "callerName": "Global Career Agency",
+    "callerNumber": "+1 619-555-8114",
+    "type": "JobContract",
+    "isScam": true,
+    "transcript": "Congratulations! You have been selected for an exclusive overseas job opportunity. To proceed with your contract, you must pay the processing and visa handling fees today.",
+    "options": [
+      "Pay the processing fee to secure the job.",
+      "Refuse and verify the company through official recruitment websites.",
+      "Ask them to reduce the fee first.",
+      "Provide your passport photo immediately."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Fake overseas job scam demanding upfront processing fees.",
+    "path": "/audio/call-9.m4a"
+  },
+  {
+    "id": "call-10",
+    "callerName": "Jessica ❤️",
+    "callerNumber": "+1 213-555-9021",
+    "type": "Emotional",
+    "isScam": true,
+    "transcript": "Hi, it's your girlfriend. I'm stuck downtown and lost my wallet. I'm scared and need you to send me money fast. Please don’t tell anyone, I feel so embarrassed.",
+    "options": [
+      "Transfer money right away to help.",
+      "Try to verify identity through a direct call or video chat.",
+      "Keep everything secret as requested.",
+      "Wait until they explain more."
+    ],
+    "correctAnswer": 1,
+    "shortSummary": "Emotional manipulation scam pretending to be a loved one needing urgent money.",
+    "path": "/audio/call-10.m4a"
+  }
+]
