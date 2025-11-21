@@ -6,8 +6,10 @@ import wechatData from "../../data/wechat.json";
 import tinderData from "../../data/tinder.json";
 import messagesData from "../../data/messages.json";
 import photosData from "../../data/photos.json";
+import phoneCallData from "../../data/phoneCall.json";
 
 import { useScamContext } from "../../assets/ScamContext.jsx";
+import { Modal } from "../Modal/Modal.jsx";
 
 const LONG_PRESS_MS = 600;
 export function Phone({
@@ -16,6 +18,7 @@ export function Phone({
   onSaveSuccess,
   onTimeUp,
   totalSeconds = 300,
+  firstCallMaxDelayMs = 3000,
 }) {
   //----------------------------------------------
   // Domain
@@ -212,6 +215,8 @@ export function Phone({
     MESSAGES: "messages",
     SEARCH: "search",
     SCAMS_FOUND: "scams_found",
+    CALL: "call",
+    DIALER: "dialer",
   };
 
   // Navigation & animation
@@ -224,6 +229,26 @@ export function Phone({
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+
+  // Incoming calls & call screen state
+  const callAudioRef = useRef(null);
+  const [callIsPlaying, setCallIsPlaying] = useState(false);
+  const [callCurrentTime, setCallCurrentTime] = useState(0);
+  const [callDuration, setCallDuration] = useState(0);
+  const [scheduledCalls, setScheduledCalls] = useState([]); // { atMs, call }
+  const scheduledTimersRef = useRef([]);
+  const [ringingCall, setRingingCall] = useState(null); // { call, callerName, callerNumber }
+  const [activeCall, setActiveCall] = useState(null); // same shape as ringingCall.call
+  const [callOutcomeMap, setCallOutcomeMap] = useState({}); // id -> 'correct'|'wrong'|'miss'
+  const [callStats, setCallStats] = useState([]); // {id,isScam,outcome}
+  const ringingAutoTimerRef = useRef(null);
+  const [callEnded, setCallEnded] = useState(false);
+  // Decision popup state
+  const [showCallDecision, setShowCallDecision] = useState(false);
+  // Dynamic call scheduler refs
+  const callWindowEndRef = useRef(Date.now() + 270000); // first 4m30s window (calls stop after 4:30, game total 5:00)
+  const hasFirstCallScheduledRef = useRef(false);
+  const dynamicSchedulerTimerRef = useRef(null);
 
   // Game countdown timer (wall-clock based, unaffected by app switching)
   const endAtRef = useRef(
@@ -245,6 +270,13 @@ export function Phone({
   const photoPressTimerRef = useRef(null);
   const photoLongPressTriggeredRef = useRef(false);
 
+  // Simple info modal (reusable) — used for Music prev/next notifications
+  const [showMusicModal, setShowMusicModal] = useState(false);
+  const [musicModalText, setMusicModalText] = useState("");
+
+  // Dialer state
+  const [dialDigits, setDialDigits] = useState("");
+
   // Global context
   const { saveScamMessage, savedMessages, removeScamMessage, setCorrectScams } =
     useScamContext();
@@ -263,6 +295,8 @@ export function Phone({
     [APPS.SEARCH]: "",
     [APPS.PHOTOS]: "#dc9730",
     [APPS.SCAMS_FOUND]: "#18a193",
+    [APPS.CALL]: "#18a193",
+    [APPS.DIALER]: "#0dbc64",
   };
 
   const titleMap = {
@@ -275,6 +309,8 @@ export function Phone({
     [APPS.MUSIC]: "Music",
     [APPS.SEARCH]: "Search",
     [APPS.SCAMS_FOUND]: "Scams FOUND",
+    [APPS.CALL]: "Call",
+    [APPS.DIALER]: "Phone",
   };
   //----------------------------------------------
 
@@ -382,7 +418,7 @@ export function Phone({
         timeUpFiredRef.current = true;
         try {
           if (typeof onTimeUp === "function") onTimeUp();
-        } catch {}
+        } catch { }
       }
     };
     // Initial tick immediately to sync UI
@@ -413,11 +449,26 @@ export function Phone({
     return () => {
       try {
         audio.pause();
-      } catch {}
+      } catch { }
       audio.removeEventListener("loadedmetadata", onLoadedMeta);
       audio.removeEventListener("timeupdate", onTimeUpdate);
       audio.removeEventListener("ended", onEnded);
       audioRef.current = null;
+    };
+  }, []);
+
+  // Clean up call audio on unmount
+  useEffect(() => {
+    return () => {
+      if (callAudioRef.current) {
+        try {
+          callAudioRef.current.pause();
+        } catch { }
+        callAudioRef.current = null;
+      }
+      // clear any scheduled timers
+      scheduledTimersRef.current.forEach((id) => window.clearTimeout(id));
+      scheduledTimersRef.current = [];
     };
   }, []);
 
@@ -451,14 +502,261 @@ export function Phone({
   };
 
   const handleMusicPrev = () => {
-    window.alert("Nomore previous songs");
+    setMusicModalText("No previous song available");
+    setShowMusicModal(true);
   };
 
   const handleMusicNext = () => {
-    window.alert("Nomore next songs");
+    setMusicModalText("No next song available");
+    setShowMusicModal(true);
+  };
+
+  // Dialer handlers
+  const handleDialDigit = (d) => {
+    setDialDigits((prev) => (prev + String(d)).slice(0, 20));
+  };
+  const handleDialDelete = () => {
+    setDialDigits((prev) => prev.slice(0, -1));
+  };
+  const handleDialCall = () => {
+    setMusicModalText("Cannot make calls");
+    setShowMusicModal(true);
   };
 
   const goHome = () => setAppWithAnim(APPS.HOME);
+
+  //====================
+  // Incoming Calls Logic
+  //====================
+  const pickCallerMeta = (call) => {
+    // Read directly from phoneCall.json entries
+    if (!call) return { name: "Unknown", number: "Unknown" };
+    const name = call.callerName || call.caller_name || "Unknown";
+    const number = call.callerNumber || call.caller_number || "Unknown";
+    return { name, number };
+  };
+
+  // Dynamic unlimited call scheduler for first 4 minutes.
+  useEffect(() => {
+    const windowEnd = callWindowEndRef.current;
+    const allCalls = Array.isArray(phoneCallData) ? phoneCallData.slice() : [];
+    // shuffle once for session variety
+    for (let i = allCalls.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [allCalls[i], allCalls[j]] = [allCalls[j], allCalls[i]];
+    }
+    let cursor = 0; // iterate through data circularly
+
+    const scheduleNext = () => {
+      if (Date.now() >= windowEnd || timeLeftMs <= 0) return; // stop after window or game end
+      // Uniform 45s scheduling for entire 4m30s window (no special first-call rule)
+      let baseDelayMs = 45000; // fixed 45s between call start attempts
+      // Adjust if overshooting window
+      const remainingMs = windowEnd - Date.now();
+      if (baseDelayMs > remainingMs) baseDelayMs = Math.max(0, remainingMs - 1000);
+
+      dynamicSchedulerTimerRef.current = window.setTimeout(() => {
+        if (Date.now() >= windowEnd || timeLeftMs <= 0) return; // guard
+        // Pick next call circularly
+        if (allCalls.length === 0) return;
+        const call = allCalls[cursor % allCalls.length];
+        cursor++;
+        const meta = pickCallerMeta(call);
+        // Allow ringing even during active call (pre-emption occurs on answer). Only prevent multiple simultaneous ringing.
+        if (!ringingCall) {
+          setRingingCall({ call, callerName: meta.name, callerNumber: meta.number });
+        }
+        // Immediately schedule next
+        scheduleNext();
+      }, baseDelayMs);
+    };
+
+    scheduleNext();
+    return () => {
+      if (dynamicSchedulerTimerRef.current) {
+        window.clearTimeout(dynamicSchedulerTimerRef.current);
+        dynamicSchedulerTimerRef.current = null;
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const ensureCallInTruth = (call) => {
+    if (!call || typeof setCorrectScams !== "function") return;
+    setCorrectScams((prev) => {
+      const key = `${APPS.CALL}-${call.id}`;
+      if (prev.some((m) => `${m.sourceApp}-${m.id}` === key)) return prev;
+      const meta = pickCallerMeta(call);
+      return [
+        ...prev,
+        {
+          id: call.id,
+          sourceApp: APPS.CALL,
+          title: `Call: ${meta.name}`,
+          shortSummary:
+            call.shortSummary || call.transcript?.slice(0, 120) || "Phone call",
+          icon: "📞",
+          type: call.type || "PhoneCall",
+        },
+      ];
+    });
+  };
+
+  const classifyAndSaveCall = (call, outcome) => {
+    if (!call) return;
+    // All phone calls are scams now regardless of underlying data flag
+    const isScam = true;
+    ensureCallInTruth(call);
+    // Record stats
+    setCallStats((prev) => [...prev, { id: call.id, isScam, outcome }]);
+    setCallOutcomeMap((prev) => ({ ...prev, [call.id]: outcome }));
+
+    // Only save for scams found list when user answered (correct/wrong)
+    if (!(outcome === "correct" || outcome === "wrong")) return; // decline/hangup(miss) not saved
+
+    const meta = pickCallerMeta(call);
+    const icon = "📞";
+    const prefix = outcome === "correct" ? "✅" : outcome === "wrong" ? "❌" : "⏱";
+    const title = `${prefix} Call: ${meta.name}`;
+    const summary = call.shortSummary || call.transcript?.slice(0, 120) || "";
+    saveScamMessage({
+      id: call.id,
+      title,
+      shortSummary: summary,
+      icon,
+      sourceApp: APPS.CALL,
+      type: call.type || "PhoneCall",
+      outcome,
+      isScam,
+    });
+  };
+
+  const handleDeclineRinging = () => {
+    if (!ringingCall) return;
+    const { call } = ringingCall;
+    // All calls are scams: decline counts as miss (ensure ground truth) but not saved
+    ensureCallInTruth(call);
+    classifyAndSaveCall(call, "miss");
+    setRingingCall(null);
+  };
+
+  const handleAnswerRinging = () => {
+    if (!ringingCall) return;
+    const { call } = ringingCall;
+    // Pre-empt any current activeCall
+    if (activeCall) {
+      try {
+        if (callAudioRef.current) {
+          callAudioRef.current.pause();
+          callAudioRef.current = null;
+        }
+      } catch { }
+      // classify old call as hang-up before choosing: scam -> miss, non-scam -> neutral
+      // Previous active call considered missed
+      classifyAndSaveCall(activeCall, "miss");
+      setActiveCall(null);
+    }
+    setRingingCall(null);
+    setActiveCall(call);
+    setCallEnded(false);
+    setShowCallDecision(false);
+    setAppWithAnim(APPS.CALL, "Right");
+  };
+
+  // Setup/teardown call audio when entering/leaving CALL app or changing activeCall
+  useEffect(() => {
+    if (activeApp !== APPS.CALL || !activeCall) {
+      if (callAudioRef.current) {
+        try {
+          callAudioRef.current.pause();
+        } catch { }
+      }
+      setCallIsPlaying(false);
+      setCallCurrentTime(0);
+      setCallDuration(0);
+      return;
+    }
+    const audio = new Audio(activeCall.path || "");
+    audio.preload = "auto";
+    const onLoadedMeta = () => setCallDuration(isFinite(audio.duration) ? audio.duration : 0);
+    const onTimeUpdate = () => setCallCurrentTime(isFinite(audio.currentTime) ? audio.currentTime : 0);
+    const onEnded = () => {
+      setCallIsPlaying(false);
+      setCallEnded(true);
+    };
+    audio.addEventListener("loadedmetadata", onLoadedMeta);
+    audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("ended", onEnded);
+    callAudioRef.current = audio;
+    // Try autoplay
+    (async () => {
+      try {
+        await audio.play();
+        setCallIsPlaying(true);
+      } catch {
+        setCallIsPlaying(false);
+      }
+    })();
+    return () => {
+      try {
+        audio.pause();
+      } catch { }
+      audio.removeEventListener("loadedmetadata", onLoadedMeta);
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("ended", onEnded);
+      callAudioRef.current = null;
+    };
+  }, [activeApp, activeCall]);
+
+
+  const handleCallHangUp = () => {
+    if (!activeCall) return;
+    // Hang up => miss
+    classifyAndSaveCall(activeCall, "miss");
+    setActiveCall(null);
+    setAppWithAnim(APPS.HOME, "Left");
+  };
+
+  const handleCallChoose = (idx) => {
+    if (!activeCall) return;
+    const isCorrect = Number(activeCall.correctAnswer) === Number(idx);
+    classifyAndSaveCall(activeCall, isCorrect ? "correct" : "wrong");
+    setActiveCall(null);
+    setAppWithAnim(APPS.HOME, "Left");
+    setShowCallDecision(false);
+  };
+
+  // Auto-decline after 10s if not answered
+  useEffect(() => {
+    if (ringingCall) {
+      if (ringingAutoTimerRef.current) {
+        window.clearTimeout(ringingAutoTimerRef.current);
+      }
+      ringingAutoTimerRef.current = window.setTimeout(() => {
+        // treat as decline
+        handleDeclineRinging();
+      }, 10000);
+    } else if (ringingAutoTimerRef.current) {
+      window.clearTimeout(ringingAutoTimerRef.current);
+      ringingAutoTimerRef.current = null;
+    }
+    return () => {
+      if (ringingAutoTimerRef.current) {
+        window.clearTimeout(ringingAutoTimerRef.current);
+        ringingAutoTimerRef.current = null;
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ringingCall]);
+
+  // Show decision popup when call audio ends
+  useEffect(() => {
+    if (callEnded && activeCall && Array.isArray(activeCall.options)) {
+      setShowCallDecision(true);
+    } else {
+      setShowCallDecision(false);
+    }
+  }, [callEnded, activeCall]);
 
   const handleLongPressMessage = (message, sourceApp) => {
     setSelectedMessage({ ...message, sourceApp });
@@ -474,7 +772,7 @@ export function Phone({
     if (typeof onSaveSuccess === "function") {
       try {
         onSaveSuccess();
-      } catch {}
+      } catch { }
     }
     setIsDialogOpen(false);
     setSelectedMessage(null);
@@ -515,6 +813,8 @@ export function Phone({
       (m) => `${m.sourceApp}-${m.id}` === key
     );
     if (!found) return;
+    // Requirement: phone call (sourceApp === APPS.CALL) entries cannot be deleted.
+    if (found.sourceApp === APPS.CALL) return; // silently ignore delete attempts for calls
     setItemToRemove({ ...found, key });
     setRemoveConfirmOpen(true);
   };
@@ -714,6 +1014,14 @@ export function Phone({
             />
           </svg>
         </button>
+        <button
+          className={`${styles.dockIcon} ${styles.dockPhone}`}
+          onClick={() => setAppWithAnim(APPS.DIALER)}
+        >
+          <span style={{ fontSize: 24 }}>
+            <svg t="1763730558497" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4669" width="32" height="32"><path d="M435.111437 592.945977c-100.246262-100.246262-198.359626-217.555718-149.302944-264.4795 66.119875-66.119875 123.708154-106.64496 6.398697-251.682106C174.897734-70.385674 95.980464 42.657984 31.993488 104.512061-42.657984 179.163533 27.72769 454.307529 300.738787 729.451526c270.878198 270.878198 546.022195 341.263872 622.806566 266.6124 61.854077-63.986976 174.897734-142.904246 29.860589-258.080803-145.037146-117.309456-185.56223-59.721178-251.682105 6.398698-46.923782 44.790883-164.233238-51.189581-266.6124-151.435844z m0 0" p-id="4670" fill="#ffffff"></path></svg>
+          </span>
+        </button>
       </div>
     </>
   );
@@ -779,9 +1087,9 @@ export function Phone({
                       width: "100%",
                       position: "relative",
                     }}
+                    key={idx}
                   >
                     <div
-                      key={idx}
                       className={styles.msgRow}
                       style={{ background: "var(--white)", flex: "1" }}
                     >
@@ -795,14 +1103,16 @@ export function Phone({
                         )}
                       </div>
                     </div>
-                    <button
-                      className={styles.removeBar}
-                      data-sourceapp={m.sourceApp}
-                      data-id={m.id}
-                      onClick={handleRequestRemove}
-                    >
-                      ✕
-                    </button>
+                    {m.sourceApp !== APPS.CALL && (
+                      <button
+                        className={styles.removeBar}
+                        data-sourceapp={m.sourceApp}
+                        data-id={m.id}
+                        onClick={handleRequestRemove}
+                      >
+                        ✕
+                      </button>
+                    )}
                   </div>
                 ))}
             </div>
@@ -946,6 +1256,131 @@ export function Phone({
           </div>
         );
 
+      // ===== Dialer (iPhone-like) =====
+      case APPS.DIALER: {
+        const keys = [
+          { d: "1", sub: "" },
+          { d: "2", sub: "ABC" },
+          { d: "3", sub: "DEF" },
+          { d: "4", sub: "GHI" },
+          { d: "5", sub: "JKL" },
+          { d: "6", sub: "MNO" },
+          { d: "7", sub: "PQRS" },
+          { d: "8", sub: "TUV" },
+          { d: "9", sub: "WXYZ" },
+          { d: "*", sub: "" },
+          { d: "0", sub: "+" },
+          { d: "#", sub: "" },
+        ];
+        return (
+          <div style={{ background: "#f6f6f8", height: "100%" }}>
+            {renderHeader()}
+            <div className={styles.dialerScreen}>
+              <div className={styles.dialerDisplay}>{dialDigits || "\u00A0"}</div>
+              <div className={styles.dialerKeypad}>
+                {keys.map((k, idx) => (
+                  <button
+                    key={idx}
+                    className={styles.dialerKey}
+                    onClick={() => handleDialDigit(k.d)}
+                  >
+                    <div className={styles.dialerDigit}>{k.d}</div>
+                    {k.sub && <div className={styles.dialerLetters}>{k.sub}</div>}
+                  </button>
+                ))}
+              </div>
+              <div className={styles.dialerActions}>
+                <button
+                  className={styles.dialerDeleteButton}
+                  onClick={handleDialDelete}
+                >
+                  ⌫
+                </button>
+                <button
+                  className={styles.dialerCallButton}
+                  onClick={handleDialCall}
+                >
+                  📞
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      // ===== Call (Voice) =====
+      case APPS.CALL: {
+        const progressPctCall =
+          callDuration > 0
+            ? Math.min(100, Math.max(0, (callCurrentTime / callDuration) * 100))
+            : 0;
+        return (
+          <div
+            style={{
+              background: "linear-gradient(180deg, var(--primary), #007669)",
+              height: "100%",
+            }}
+          >
+            <div
+              className={`${styles.appHeader} ${styles.appHeaderColored}`}
+              style={{ backgroundColor: "var(--primary)" }}
+            >
+            </div>
+            <div className={styles.musicScreen}>
+              <div className={styles.musicCard}>
+                <div className={styles.musicNote}><svg t="1763730558497" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4669" width="100" height="100"><path d="M435.111437 592.945977c-100.246262-100.246262-198.359626-217.555718-149.302944-264.4795 66.119875-66.119875 123.708154-106.64496 6.398697-251.682106C174.897734-70.385674 95.980464 42.657984 31.993488 104.512061-42.657984 179.163533 27.72769 454.307529 300.738787 729.451526c270.878198 270.878198 546.022195 341.263872 622.806566 266.6124 61.854077-63.986976 174.897734-142.904246 29.860589-258.080803-145.037146-117.309456-185.56223-59.721178-251.682105 6.398698-46.923782 44.790883-164.233238-51.189581-266.6124-151.435844z m0 0" p-id="4670" fill="#ffffff"></path></svg></div>
+              </div>
+
+              <div className={styles.musicTitle}>
+                {pickCallerMeta(activeCall).name}
+              </div>
+              <div className={styles.musicSubtitle}>
+                {pickCallerMeta(activeCall).number}
+              </div>
+
+              <div className={styles.musicControls}>
+                <button
+                  className={styles.musicPlayBtn}
+                  onClick={handleCallHangUp}
+                  style={{ backgroundColor: "var(--wrong)", color: "white", marginTop: '3rem' }}
+                >
+                  <svg t="1763729739022" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3616" width="32" height="32"><path d="M584.96 242.944a29.866667 29.866667 0 0 1 36.778667-4.266667l5.461333 4.266667L735.744 351.573333l108.629333-108.629333a29.866667 29.866667 0 1 1 42.24 42.24L777.984 393.813333 886.613333 502.442667a29.866667 29.866667 0 0 1 4.266667 36.864l-4.266667 5.376a29.866667 29.866667 0 0 1-36.864 4.266666l-5.376-4.266666L735.744 436.053333 627.2 544.682667a29.866667 29.866667 0 0 1-42.24-42.24l108.544-108.629334-108.544-108.629333a29.866667 29.866667 0 0 1-4.266667-36.778667l4.266667-5.461333z" fill="#ffffff" p-id="3617"></path><path d="M446.890667 338.176l-57.941334 43.008c20.992 60.074667 46.08 114.858667 78.336 165.034667 32.256 50.090667 71.509333 95.573333 117.333334 139.349333l60.245333-39.594667a87.04 87.04 0 0 1 118.101333 19.2l94.72 116.053334 4.608 7.168c28.330667 39.936 16.469333 96-26.026666 123.989333l-95.744 62.72c-91.562667 57.514667-270.762667-92.074667-424.96-331.946667C161.28 403.456 96.682667 173.568 188.757333 113.066667L284.501333 50.346667c0.597333-2.986667 3.498667-2.304 7.082667-4.693334a89.429333 89.429333 0 0 1 119.637333 41.130667l66.474667 134.570667c21.76 41.813333 8.277333 91.306667-30.72 116.906666z" fill="#ffffff" p-id="3618"></path></svg>
+                </button>
+              </div>
+
+              {/* Decision popup overlay */}
+              {showCallDecision && activeCall && (
+                <div className={styles.modalOverlay} style={{ zIndex: 999 }}>
+                  <div className={styles.modal} style={{
+                    maxWidth: '92%', width: '92%', padding: '1rem', display: "flex",
+                    flexDirection: "column",
+                    gap: "var(--gap-inner)",
+                  }}>
+                    <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>I will ...</div>
+                    {activeCall.options.map((opt, idx) => (
+                      <button
+                        key={idx}
+                        className={styles.modalBtn}
+                        style={{
+                          width: '100%',
+                          background: 'var(--white)',
+                          border: '1px solid var(--info-tint)',
+                          color: 'var(--body-normal-c)',
+                          textAlign: 'left',
+                        }}
+                        onClick={() => handleCallChoose(idx)}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      }
+
       // ===== Photos =====
       case APPS.PHOTOS:
         return (
@@ -985,7 +1420,8 @@ export function Phone({
           <div
             style={{
               backgroundColor: "rgba(215, 223, 241, 1)",
-              height: "100%",
+              height: "calc(100dvh)",
+              overflowY: "scroll",
             }}
           >
             {renderHeader()}
@@ -1356,7 +1792,7 @@ export function Phone({
         });
       }
       if (typeof setCorrectScams === "function") setCorrectScams(truth);
-    } catch {}
+    } catch { }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -1377,9 +1813,8 @@ export function Phone({
       <div className={styles.phoneInner}>
         <div
           key={animTick}
-          className={`${styles.appContent} ${
-            styles[`slideIn${transitionDir}`]
-          }`}
+          className={`${styles.appContent} ${styles[`slideIn${transitionDir}`]
+            }`}
         >
           {renderAppContent()}
         </div>
@@ -1387,39 +1822,23 @@ export function Phone({
 
       {/* long press popup */}
       {isDialogOpen && selectedMessage && (
-        <div
-          className={styles.modalOverlay}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              // Clicked outside the modal content
-              handleCancelSave();
-            }
-          }}
-        >
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalTitle}>Mark as Scam?</div>
-            <div className={styles.modalSummary}>
+        <Modal
+          isOpen={true}
+          within={true}
+          onClose={handleCancelSave}
+          title="Mark as Scam?"
+          summary={(
+            <>
               <strong>{selectedMessage.title}</strong>
               <br />
               {selectedMessage.shortSummary}
-            </div>
-
-            <div className={styles.modalButtons}>
-              <button
-                className={`${styles.modalBtn} ${styles.modalCancel}`}
-                onClick={handleCancelSave}
-              >
-                Cancel
-              </button>
-              <button
-                className={`${styles.modalBtn} ${styles.modalConfirm}`}
-                onClick={handleConfirmSave}
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
+            </>
+          )}
+          cancelText="Cancel"
+          onCancel={handleCancelSave}
+          confirmText="Save"
+          onConfirm={handleConfirmSave}
+        />
       )}
 
       {isPhotoOpen && selectedPhoto && (
@@ -1450,38 +1869,58 @@ export function Phone({
         </div>
       )}
 
+      {/* Generic info modal (used by Music controls) */}
+      {showMusicModal && (
+        <Modal
+          isOpen={true}
+          within={true}
+          onClose={() => setShowMusicModal(false)}
+          title="Notice"
+          summary={musicModalText || "Something happened"}
+          confirmText="OK"
+          onConfirm={() => setShowMusicModal(false)}
+        />
+      )}
+
       {/* remove confirmation popup */}
       {removeConfirmOpen && itemToRemove && (
-        <div
-          className={styles.modalOverlay}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              handleCancelRemove();
-            }
-          }}
-        >
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalTitle}>Delete flagged item?</div>
-            <div className={styles.modalSummary}>
-              <strong>
-                {itemToRemove.title || itemToRemove.text || "Untitled"}
-              </strong>
+        <Modal
+          isOpen={true}
+          within={true}
+          onClose={handleCancelRemove}
+          title="Delete flagged item?"
+          summary={(
+            <>
+              <strong>{itemToRemove.title || itemToRemove.text || "Untitled"}</strong>
               <br />
               {itemToRemove.shortSummary}
-            </div>
+            </>
+          )}
+          cancelText="Cancel"
+          onCancel={handleCancelRemove}
+          confirmText="Delete"
+          onConfirm={handleConfirmRemove}
+        />
+      )}
 
-            <div className={styles.modalButtons}>
+      {/* Incoming Call Overlay */}
+      {ringingCall && (
+        <div className={styles.callOverlay}>
+          <div className={styles.callCard}>
+            <div className={styles.callName}>{ringingCall.callerName}</div>
+
+            <div className={styles.callActions}>
               <button
-                className={`${styles.modalBtn} ${styles.modalCancel}`}
-                onClick={handleConfirmRemove}
+                className={`${styles.callBtn} ${styles.callDecline}`}
+                onClick={handleDeclineRinging}
               >
-                Delete
+                Decline
               </button>
               <button
-                className={`${styles.modalBtn} ${styles.modalConfirm}`}
-                onClick={handleCancelRemove}
+                className={`${styles.callBtn} ${styles.callAnswer}`}
+                onClick={handleAnswerRinging}
               >
-                Cancel
+                Answer
               </button>
             </div>
           </div>

@@ -55,22 +55,26 @@ export function DetectionResult({ onBack, onPlayAgain }) {
       photos: "Photos",
       message: "Message",
       phone: "Phone",
+      call: "Call",
       bank: "Bank",
     };
     const key = String(app).toLowerCase();
-    return (
-      map[key] || String(app).charAt(0).toUpperCase() + String(app).slice(1)
-    );
+    return map[key] || String(app).charAt(0).toUpperCase() + String(app).slice(1);
   };
 
   const stats = useMemo(() => {
     const truthMap = new Map(sourceTruth.map((m) => [keyOf(m), m]));
     const savedMap = new Map(sourceSaved.map((m) => [keyOf(m), m]));
 
-    const correctlyIdentified = sourceSaved.filter((m) =>
-      truthMap.has(keyOf(m))
-    ); // TP
-    const falsePos = sourceSaved.filter((m) => !truthMap.has(keyOf(m))); // FP
+    // Customized logic for phone calls: we rely on outcome instead of presence in truth.
+    const correctlyIdentified = sourceSaved.filter((m) => {
+      if (m.sourceApp === 'call') return m.outcome === 'correct';
+      return truthMap.has(keyOf(m));
+    }); // TP
+    const falsePos = sourceSaved.filter((m) => {
+      if (m.sourceApp === 'call') return m.outcome === 'wrong';
+      return !truthMap.has(keyOf(m));
+    }); // FP
     const missed = sourceTruth.filter((m) => !savedMap.has(keyOf(m))); // FN
     const totalScams = sourceTruth.length;
 

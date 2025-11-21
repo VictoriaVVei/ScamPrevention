@@ -5,6 +5,7 @@ import { Header } from "../../components/Header/Header.jsx";
 import { Footer } from "../../components/Footer/Footer.jsx";
 import { Phone } from "../../components/Phone/Phone.jsx";
 import { useScamContext } from "../../assets/ScamContext.jsx";
+import { Modal } from "../../components/Modal/Modal.jsx";
 
 export function PhoneGame() {
   //----------------------------------------------
@@ -244,37 +245,20 @@ export function PhoneGame() {
       )}
 
       {confirmAction && (
-        <div className={styles.modalOverlay} onClick={handleConfirmModalCancel}>
-          <div
-            className={styles.modal}
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-          >
-            <div className={styles.modalTitle}>
-              {confirmAction === "finish" ? "Finish Game?" : "Exit Game?"}
-            </div>
-            <div className={styles.modalText}>
-              {confirmAction === "finish"
-                ? "You will submit and view the final results."
-                : "You will leave the play screen and return to the instructions."}
-            </div>
-            <div className={styles.modalButtons}>
-              <button
-                className={`${styles.modalBtn} ${styles.modalCancel}`}
-                onClick={handleConfirmModalCancel}
-              >
-                Cancel
-              </button>
-              <button
-                className={`${styles.modalBtn} ${styles.modalConfirm}`}
-                onClick={handleConfirmModalOk}
-              >
-                Confirm
-              </button>
-            </div>
-          </div>
-        </div>
+        <Modal
+          isOpen={true}
+          onClose={handleConfirmModalCancel}
+          title={confirmAction === "finish" ? "Finish Game?" : "Exit Game?"}
+          summary={
+            confirmAction === "finish"
+              ? "You will submit and view the final results."
+              : "You will leave the play screen and return to the instructions."
+          }
+          cancelText="Cancel"
+          onCancel={handleConfirmModalCancel}
+          confirmText="Confirm"
+          onConfirm={handleConfirmModalOk}
+        />
       )}
 
       <Footer />
