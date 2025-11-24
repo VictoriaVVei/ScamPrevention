@@ -1061,6 +1061,22 @@ export function StyleGuide() {
           <div className={styles.container}>
             <h2 className={styles.h2}>8. Forms</h2>
             <p className={styles.caption}>Matches PhoneGame form format.</p>
+            <div style={{ maxWidth: "100%" }}>
+              <text
+                placeholder="Paste message here..."
+              />
+            </div>
+            <div style={{ maxWidth: "100%" }}>
+              <input
+                type="text"
+                className={styles.formInput}
+                placeholder="Add Title"
+              />
+              <textarea
+                className={styles.formTextarea}
+                placeholder="Paste message here..."
+              />
+            </div>
           </div>
         </section>
 
@@ -1234,9 +1250,21 @@ export function StyleGuide() {
               <div>
                 <p className={styles.body}>1. Tag</p>
                 <div className={styles.tagRow}>
-                  <span className={styles.tag}>#Tag</span>
-                  <span className={styles.tag}>#Bank</span>
-                  <span className={styles.tag}>#Scam</span>
+                  <span 
+                    className={`${styles.tag} ${selectedTag === 'Tag' ? styles.sgTagSelected : ''}`}
+                    onClick={() => setSelectedTag(selectedTag === 'Tag' ? null : 'Tag')}
+                    style={{ cursor: 'pointer' }}
+                  >#Tag</span>
+                  <span 
+                    className={`${styles.tag} ${selectedTag === 'Bank' ? styles.sgTagSelected : ''}`}
+                    onClick={() => setSelectedTag(selectedTag === 'Bank' ? null : 'Bank')}
+                    style={{ cursor: 'pointer' }}
+                  >#Bank</span>
+                  <span 
+                    className={`${styles.tag} ${selectedTag === 'Scam' ? styles.sgTagSelected : ''}`}
+                    onClick={() => setSelectedTag(selectedTag === 'Scam' ? null : 'Scam')}
+                    style={{ cursor: 'pointer' }}
+                  >#Scam</span>
                 </div>
               </div>
 

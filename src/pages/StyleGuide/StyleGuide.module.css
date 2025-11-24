@@ -315,6 +315,7 @@
   padding: 0.3rem 0.5rem;
   font-size: 0.8rem;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 /* Segmentation result blocks (from DetectionResult) */
@@ -505,7 +506,7 @@
 }
 
 .sgTagSelected {
-  background: var(--tag-selected);
+  background: var(--primary);
   color: #ffffff;
 }
 
@@ -516,26 +517,75 @@
   max-width: 400px;
 }
 
-.searchInput {
+.searchInput { 
+	width: 100%; 
+	padding: 12px 20px 12px 44px; 
+	border: none; 
+	border-radius: 999px; 
+	background: var(--black-100); 
+	font-size: 16px; 
+	font-family: var(--font-normal);
+	color: var(--body-normal-c);
+	transition: all 0.2s ease;
+}
+
+.searchInput:focus { 
+	outline: none; 
+	background: var(--white);
+	box-shadow: 0 0 0 2px var(--primary); 
+}
+
+.searchInput::placeholder { 
+  color: var(--body-normal-c); 
+}
+
+/* Forms */
+.formInput {
   width: 100%;
-  padding: 12px 20px 12px 44px;
-  border: none;
-  border-radius: 999px;
-  background: var(--gray-200);
-  font-size: 16px;
-  font-family: var(--font-sans);
-  color: var(--gray-900);
+  padding: var(--padding-page);
+  border: 1px solid var(--black-200);
+  border-radius: var(--radius-normal);
+  font-family: var(--font-normal);
+  font-size: var(--body-normal-t);
+  color: var(--body-normal-c);
+  background: var(--white);
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.formInput::placeholder {
+  color: var(--neutral-muted);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--info-tint);
+}
+
+.formTextarea {
+  width: 100%;
+  min-height: 100px;
+  padding: var(--padding-page);
+  border: 1px solid var(--black-200);
+  border-radius: var(--radius-normal);
+  font-family: var(--font-normal);
+  font-size: var(--body-normal-t);
+  color: var(--body-normal-c);
+  resize: none;
+  overflow-y: auto;
+  background: var(--white);
   transition: all 0.2s ease;
 }
 
-.searchInput:focus {
-  outline: none;
-  background: var(--white);
-  box-shadow: 0 0 0 2px var(--primary);
+.formTextarea::placeholder {
+  color: var(--neutral-muted);
 }
 
-.searchInput::placeholder {
-  color: var(--gray-600);
+.formTextarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--info-tint);
 }
 
 /* Hit Button Divider */
