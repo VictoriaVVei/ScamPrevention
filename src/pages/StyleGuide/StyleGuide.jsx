@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { CssVarsProvider, extendTheme } from "@mui/joy/styles";
+import CircularProgress from "@mui/joy/CircularProgress";
 import styles from "./StyleGuide.module.css";
 import { Header } from "../../components/Header/Header.jsx";
 import { Footer } from "../../components/Footer/Footer.jsx";
@@ -35,7 +37,30 @@ export function StyleGuide() {
   const goNext = () => {
     if (canNext) setSlideIndex((i) => i + 1);
   };
+  // Forms: simplified constants only (no submit / validation per request)
+  const SCAM_TYPES = ["New Scam", "Web Scam", "Phone Scam"];
 
+  // Joy UI theme extension: ensure success palette 500 matches desired #00a63e
+  const joyTheme = extendTheme({
+    colorSchemes: {
+      light: {
+        palette: {
+          success: {
+            50: "#e6f9ef",
+            100: "#c2f0d8",
+            200: "#99e6bf",
+            300: "#66d89f",
+            400: "#33c879",
+            500: "#00a63e",
+            600: "#008d34",
+            700: "#006b27",
+            800: "#004a1b",
+            900: "#00290e",
+          },
+        },
+      },
+    },
+  });
   // Touch swipe support
   const [touchStartX, setTouchStartX] = useState(null);
   const onTouchStart = (e) => {
@@ -1062,9 +1087,7 @@ export function StyleGuide() {
             <h2 className={styles.h2}>8. Forms</h2>
             <p className={styles.caption}>Matches PhoneGame form format.</p>
             <div style={{ maxWidth: "100%" }}>
-              <text
-                placeholder="Paste message here..."
-              />
+              <text placeholder="Paste message here..." />
             </div>
             <div style={{ maxWidth: "100%" }}>
               <input
@@ -1076,6 +1099,77 @@ export function StyleGuide() {
                 className={styles.formTextarea}
                 placeholder="Paste message here..."
               />
+            </div>
+            {/* Simplified static form (uncontrolled) – added second example */}
+            <p className={styles.caption} style={{ marginTop: "2rem" }}>
+              Simplified form fields only (no actions).
+            </p>
+            <form
+              className={styles.formDemo}
+              aria-label="Simplified scam report form"
+            >
+              <div className={styles.formGroup}>
+                <label htmlFor="sg-type" className={styles.label}>
+                  Scam Type
+                </label>
+                <select
+                  id="sg-type"
+                  name="type"
+                  className={styles.sgSelect}
+                  defaultValue="New Scam"
+                >
+                  {SCAM_TYPES.map((t) => (
+                    <option key={t}>{t}</option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="sg-contact" className={styles.label}>
+                  Contact / Account / URL
+                </label>
+                <input
+                  id="sg-contact"
+                  name="contact"
+                  type="text"
+                  className={styles.sgInput}
+                  placeholder="e.g. +1 555 123 / wechat id / website.com"
+                />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="sg-description" className={styles.label}>
+                  Description
+                </label>
+                <textarea
+                  id="sg-description"
+                  name="description"
+                  rows={4}
+                  className={styles.sgTextarea}
+                  placeholder="Briefly describe what the scammer said or requested."
+                />
+              </div>
+            </form>
+            {/* Component cards without gray code blocks */}
+            <div className={styles.formComponentsGrid}>
+              <div className={styles.formComponentCard}>
+                <h4>Input Field</h4>
+                <input className={styles.sgInput} placeholder="Input" />
+              </div>
+              <div className={styles.formComponentCard}>
+                <h4>Select Field</h4>
+                <select className={styles.sgSelect} defaultValue="New Scam">
+                  {SCAM_TYPES.map((t) => (
+                    <option key={t}>{t}</option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles.formComponentCard}>
+                <h4>Textarea</h4>
+                <textarea
+                  className={styles.sgTextarea}
+                  rows={3}
+                  placeholder="Multiline"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -1247,28 +1341,56 @@ export function StyleGuide() {
                 gap: "var(--gap-outter)",
               }}
             >
-              <div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
                 <p className={styles.body}>1. Tag</p>
                 <div className={styles.tagRow}>
-                  <span 
-                    className={`${styles.tag} ${selectedTag === 'Tag' ? styles.sgTagSelected : ''}`}
-                    onClick={() => setSelectedTag(selectedTag === 'Tag' ? null : 'Tag')}
-                    style={{ cursor: 'pointer' }}
-                  >#Tag</span>
-                  <span 
-                    className={`${styles.tag} ${selectedTag === 'Bank' ? styles.sgTagSelected : ''}`}
-                    onClick={() => setSelectedTag(selectedTag === 'Bank' ? null : 'Bank')}
-                    style={{ cursor: 'pointer' }}
-                  >#Bank</span>
-                  <span 
-                    className={`${styles.tag} ${selectedTag === 'Scam' ? styles.sgTagSelected : ''}`}
-                    onClick={() => setSelectedTag(selectedTag === 'Scam' ? null : 'Scam')}
-                    style={{ cursor: 'pointer' }}
-                  >#Scam</span>
+                  <span
+                    className={`${styles.tag} ${
+                      selectedTag === "Tag" ? styles.sgTagSelected : ""
+                    }`}
+                    onClick={() =>
+                      setSelectedTag(selectedTag === "Tag" ? null : "Tag")
+                    }
+                    style={{ cursor: "pointer" }}
+                  >
+                    #Tag
+                  </span>
+                  <span
+                    className={`${styles.tag} ${
+                      selectedTag === "Bank" ? styles.sgTagSelected : ""
+                    }`}
+                    onClick={() =>
+                      setSelectedTag(selectedTag === "Bank" ? null : "Bank")
+                    }
+                    style={{ cursor: "pointer" }}
+                  >
+                    #Bank
+                  </span>
+                  <span
+                    className={`${styles.tag} ${
+                      selectedTag === "Scam" ? styles.sgTagSelected : ""
+                    }`}
+                    onClick={() =>
+                      setSelectedTag(selectedTag === "Scam" ? null : "Scam")
+                    }
+                    style={{ cursor: "pointer" }}
+                  >
+                    #Scam
+                  </span>
                 </div>
               </div>
 
-              <div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
                 <p className={styles.body}>2. Slide</p>
                 <div className={styles.card}>
                   <h2 className={styles.h2}>Slides Pattern (Interactive)</h2>
@@ -1329,7 +1451,12 @@ export function StyleGuide() {
                 </div>
               </div>
 
-              <div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
                 <p className={styles.body}>3. Phone App</p>
                 <div
                   style={{
@@ -1346,7 +1473,12 @@ export function StyleGuide() {
                 </div>
               </div>
 
-              <div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
                 <p className={styles.body}>4. Phone message</p>
                 <MessageRow
                   message={{
@@ -1357,11 +1489,13 @@ export function StyleGuide() {
                 />
               </div>
 
-              {/* Search Input */}
-              <div style={{ marginTop: 24 }}>
-                <div className={styles.caption} style={{ marginBottom: 8 }}>
-                  Search Input
-                </div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
+                <p className={styles.body}>5. Search Input</p>
                 <div className={styles.searchInputWrapper}>
                   <svg
                     width="20"
@@ -1393,11 +1527,13 @@ export function StyleGuide() {
                 </div>
               </div>
 
-              {/* Button Divider */}
-              <div style={{ marginTop: 24 }}>
-                <div className={styles.caption} style={{ marginBottom: 8 }}>
-                  List End State
-                </div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
+                <p className={styles.body}>6. List End State</p>
                 <div className={styles.hitButtonDivider}>
                   <span className={styles.hitButtonLine}></span>
                   <span className={styles.hitButtonText}>
@@ -1407,11 +1543,13 @@ export function StyleGuide() {
                 </div>
               </div>
 
-              {/* Date Display */}
-              <div style={{ marginTop: 24 }}>
-                <div className={styles.caption} style={{ marginBottom: 8 }}>
-                  Timestamp Display
-                </div>
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
+                <p className={styles.body}>7. Timestamp Display</p>
                 <div
                   className={styles.demoRow}
                   style={{
@@ -1427,6 +1565,88 @@ export function StyleGuide() {
                   <div className={styles.dateDisplayRelative}>Yesterday</div>
                   <div className={styles.dateDisplayRelative}>1 hour ago</div>
                   <div className={styles.dateDisplayRelative}>1 min ago</div>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  borderBottom: "1px solid var(--black-200)",
+                  paddingBottom: "1rem",
+                }}
+              >
+                <p className={styles.body}>8. Joy UI Circular Progress</p>
+                <CssVarsProvider theme={joyTheme}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "2rem",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <CircularProgress
+                      size="sm"
+                      color="success"
+                      variant="soft"
+                    />
+                    <CircularProgress
+                      size="md"
+                      color="success"
+                      variant="plain"
+                    />
+                    <CircularProgress
+                      size="lg"
+                      color="success"
+                      variant="solid"
+                    />
+                  </div>
+                </CssVarsProvider>
+                <div
+                  style={{
+                    marginTop: "0.75rem",
+                    fontSize: "0.75rem",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <strong>Install:</strong>
+                  <pre
+                    style={{
+                      background: "#0f172a",
+                      color: "#e2e8f0",
+                      padding: "0.75rem 1rem",
+                      borderRadius: "0.5rem",
+                      fontSize: "0.75rem",
+                      overflow: "auto",
+                    }}
+                  >
+                    npm install @mui/joy @emotion/react @emotion/styled
+                  </pre>
+                  <a
+                    className={styles.anchor}
+                    href="https://mui.com/joy-ui/getting-started/installation/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Joy UI Installation Guide
+                  </a>
+                  <div style={{ marginTop: "0.5rem" }}>
+                    <code
+                      style={{
+                        background: "#0f172a",
+                        color: "#99e6bf",
+                        padding: "0.25rem 0.5rem",
+                        borderRadius: "4px",
+                        fontSize: "0.65rem",
+                      }}
+                    >
+                      {
+                        '<CircularProgress size="md" color="success" variant="soft" />'
+                      }
+                    </code>
+                    <span style={{ marginLeft: "0.5rem" }}>
+                      Theme success[500] = #00a63e
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

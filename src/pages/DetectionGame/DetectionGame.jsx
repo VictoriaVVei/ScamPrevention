@@ -86,7 +86,7 @@ export function DetectionGame() {
             </li>
             <li>
               <span className={styles.stepCircle}>2</span>
-              <p>Answer incoming phone calls and choose how to handle them.</p>
+              <p>Answer incoming phone calls and choose how to handle them. (Turn on Voice)</p>
             </li>
             <li>
               <span className={styles.stepCircle}>3</span>
