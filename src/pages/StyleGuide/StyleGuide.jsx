@@ -1329,6 +1329,34 @@ export function StyleGuide() {
                 </div>
               </div>
 
+              <div>
+                <p className={styles.body}>3. Phone App</p>
+                <div
+                  style={{
+                    backgroundColor: "var(--primary)",
+                    width: "fit-content",
+                  }}
+                >
+                  <HomeIcon
+                    label="Mail"
+                    badge={5}
+                    type="mail"
+                    icon={<MailSvg />}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <p className={styles.body}>4. Phone message</p>
+                <MessageRow
+                  message={{
+                    icon: "✉️",
+                    title: "Canvas",
+                    text: "New Assignment Posted: Week 5 Discussion. Your instructor has posted a new assignment in SRID.",
+                  }}
+                />
+              </div>
+
               {/* Search Input */}
               <div style={{ marginTop: 24 }}>
                 <div className={styles.caption} style={{ marginBottom: 8 }}>
