@@ -1061,6 +1061,22 @@ export function StyleGuide() {
           <div className={styles.container}>
             <h2 className={styles.h2}>8. Forms</h2>
             <p className={styles.caption}>Matches PhoneGame form format.</p>
+            <div style={{ maxWidth: "100%" }}>
+              <text
+                placeholder="Paste message here..."
+              />
+            </div>
+            <div style={{ maxWidth: "100%" }}>
+              <input
+                type="text"
+                className={styles.formInput}
+                placeholder="Add Title"
+              />
+              <textarea
+                className={styles.formTextarea}
+                placeholder="Paste message here..."
+              />
+            </div>
           </div>
         </section>
 
