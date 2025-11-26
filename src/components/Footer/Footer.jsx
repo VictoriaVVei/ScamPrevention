@@ -140,7 +140,13 @@ export function Footer() {
           onClick={() => setShowAddMenu(false)}
         >
           <div className={styles.addMenu} onClick={(e) => e.stopPropagation()}>
-            <div className={`${styles.item} ${styles.blue}`}>
+            <div
+              className={`${styles.item} ${styles.blue}`}
+              onClick={() => {
+                navigate("/post-story");
+                setShowAddMenu(false);
+              }}
+            >
               <svg
                 width="36"
                 height="36"
