@@ -1,0 +1,121 @@
+#ReportGuideline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  background: var(--bg-normal);
+  font-family: var(--font-normal);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--gap-outter);
+  padding: var(--padding-page);
+  height: 100%;
+  overflow-y: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-outter);
+  padding: var(--padding-cards);
+  background: var(--white);
+  border-radius: var(--radius-large);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1),
+    0 0.0625rem 0.125rem -0.0625rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bookIcon {
+  width: 48px;
+  height: 48px;
+  color: #155DFC;
+}
+
+.title {
+  font-size: var(--subTitle-large);
+  font-weight: 700;
+  color: var(--title-normal-c);
+  margin: 0;
+}
+
+.infoBox {
+  background-color: #e6f9ef;
+  border: 1px solid #c2f0d8;
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: #006b27; 
+  font-size: var(--body-normal-t);
+  line-height: 1.5;
+}
+
+.sectionTitle {
+  font-size: var(--subTitle-small);
+  font-weight: 700;
+  color: var(--title-normal-c);
+  margin-bottom: 0.5rem;
+}
+
+.stepsList {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0;
+  color: var(--body-normal-c);
+  font-size: var(--body-normal-t);
+  line-height: 1.6;
+}
+
+.stepsList li {
+  margin-bottom: 0.5rem;
+}
+
+.highlightBlue {
+  color: #155DFC;
+  font-weight: 500;
+}
+
+.warningBox {
+  background-color: #fff9e6; 
+  border: 1px solid #ffe082;
+  border-radius: 12px;
+  padding: 1.25rem;
+  color: #856404;
+  font-size: var(--body-normal-t);
+  line-height: 1.5;
+}
+
+.warningTitle {
+  font-weight: 700;
+  color: #d97706; 
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.okButton {
+  width: 100%;
+  padding: 1rem;
+  background-color: #00c2a0; 
+  color: var(--white);
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.okButton:hover {
+  background-color: #00a085;
+}

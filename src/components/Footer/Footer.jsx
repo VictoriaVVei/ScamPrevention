@@ -198,7 +198,11 @@ export function Footer() {
               Post Story
             </div>
 
-            <div className={`${styles.item} ${styles.orange}`}>
+            <div 
+              className={`${styles.item} ${styles.orange}`}
+              onClick={() => navigate("/report-guideline")}
+              style={{ cursor: "pointer" }}
+            >
               <svg
                 width="36"
                 height="36"

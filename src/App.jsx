@@ -9,6 +9,8 @@ import { ScamGuidePage } from "./pages/ScamGuidePage/ScamGuidePage.jsx";
 import { DailyQuestion } from "./pages/DailyQuestion/DailyQuestion.jsx";
 import { StyleGuide } from "./pages/StyleGuide/StyleGuide.jsx";
 import { PostStory } from "./pages/PostStory/PostStory.jsx";
+import { ReportScam } from "./pages/ReportScam/ReportScam.jsx";
+import { ReportGuideline } from "./pages/ReportGuideline/ReportGuideline.jsx";
 
 import { ScamProvider } from "./assets/ScamContext.jsx";
 
@@ -27,6 +29,8 @@ function App() {
       <Route path="/daily-question" element={<DailyQuestion />} />
       <Route path="/style-guide" element={<StyleGuide />} />
       <Route path="/post-story" element={<PostStory />} />
+      <Route path="/report-scam" element={<ReportScam />} />
+      <Route path="/report-guideline" element={<ReportGuideline />} />
 
       <Route path="*" element={<Navigate to="/landing-page" replace />} />
     </Routes>
